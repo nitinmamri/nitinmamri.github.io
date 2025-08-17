@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NITIN PHOTO STUDIO AND JAN SEVA KENDRA</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to right, #ffe5ec, #fdc1de);
+    overflow-x: hidden;
+}
+/* HEADER */
+.top-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background: linear-gradient(90deg, #001f4d, #003366, #001a33);
+    height: 200px;
+    padding: 0 30px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+}
+/* Logo container */
+.logo {
+    position: relative;
+    height: 120px;
+    width: auto;
+    border-radius: 12px;
+    overflow: visible;
+    z-index: 1;
+}
+.logo::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 105%;
+    height: 105%;
+    border-radius: 10px;
+    background: linear-gradient(270deg, #ff0099, #00ffff, #ffcc00, #ff0099);
+    background-size: 800% 800%;
+    animation: backgroundLightShift 6s ease-in-out infinite;
+    filter: blur(16px) brightness(1.3) saturate(1.5);
+    opacity: 0.65;
+    z-index: -1;
+}
+.logo img {
+    display: block;
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(255, 0, 150, 0.7);
+    height: 120px;
+    width: auto;
+}
+/* Title Text Animation */
+.top-title h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(270deg, #ff0099, #00ffff, #ffcc00, #ff0099);
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleColorShift 6s ease-in-out infinite;
+}
+@keyframes backgroundLightShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+@keyframes titleColorShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+/* MENU */
+.main-menu-bar {
+    background: linear-gradient(180deg, #000000, #458000);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+}
+.menu-group {
+    position: relative;
+    margin-right: 8px;
+}
+.menu-item {
+    padding: 8px 14px;
+    color: white;
+    background: linear-gradient(90deg,#ff0057,#ff9800);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.menu-item.clicked {
+    animation: menuExplosion 0.6s ease-out forwards;
+}
+@keyframes menuExplosion {
+    0% { transform: scale(1); box-shadow: none; background: linear-gradient(90deg, #ff0057,#ff9800);}
+    25% { transform: scale(1.2); box-shadow: 0 0 25px rgba(255, 255, 255, 0.9),0 0 50px rgba(255, 0, 150, 0.8),0 0 75px rgba(0, 255, 200, 0.7);
+           background: linear-gradient(135deg, #ff00f7, #00f0ff, #00ff85, #ffcc00); background-size: 300% 300%;}
+    50% { transform: scale(0.95); }
+    75% { transform: scale(1.05); }
+    100% { transform: scale(1); box-shadow: none; background: linear-gradient(90deg, #ff0057,#ff9800);}
+}
+/* SUBMENU */
+.submenu {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    border-radius: 6px;
+    min-width: 360px;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    z-index: 999;max-height:500px;overflow:scroll;width:100%;
+}
+.submenu a {
+    padding: 8px 12px;
+    color: white;
+    text-decoration: none;
+}
+.submenu a:hover {
+    background: linear-gradient(90deg,#ffed00,#00e0ff);
+    color: black;
+}
+/* PAGE CONTENT */
+.page-wrapper { padding: 20px; }
+.main-content {
+    background: linear-gradient(90deg, #ffecd2, #fcb69f);
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    min-height: 500px;
+}
+.watermark {
+    position: absolute;
+    inset: 0;
+    background: url('https://lh3.googleusercontent.com/d/1rBgp9P9DzhCqV1SDDsCO38S02FXX9jQK=w300') center/contain no-repeat;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* FOOTER */
+.site-footer {
+    background: linear-gradient(90deg,#001f4d,#003389,#0059b3);
+    color: white;
+    padding: 30px 15px;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: left;
+}
+.footer-content div {
+    flex: 1 1 250px;
+}
+.footer-content h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-bottom: 2px solid #ffcc00;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+.footer-content p, .footer-content a {
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+}
+.footer-content a:hover {
+    color: #ffcc00;
+}
+.social-icons a {
+    font-size: 22px;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: 10px;
+    font-size: 14px;
+}
+/* Dust Particles */
+.dust-particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, #ffeb3b, #ff4081);
+    z-index: 9999;
+}
+
+/* WhatsApp Modal Styles */
+#whatsappModal {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 25px;
+  box-shadow: 0 0 8px #333;
+  border-radius: 8px;
+  z-index: 10000;
+  width: 300px;
+  text-align: center;
+}
+#modalBg {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 9999;
+}
+#mobileNumber {
+  width: 90%;
+  padding: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+#whatsappModal button {
+  padding: 8px 16px;
+  font-size: 16px;
+  margin: 10px 5px 0 5px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<div class="top-title">
+    <div class="logo"><img src="https://lh3.googleusercontent.com/d/1tIE79XQXmSJ-46U44ztAA2sWNqdbGHWT=w300" alt="Logo 1"></div>
+    <h1>NITIN PHOTO STUDIO<br>JAN SEVA KENDRA</h1>
+    <div class="logo"><img src="https://lh3.googleusercontent.com/d/1auwk9cZeynDGEWF9jFXsUL9kjvGY5LBx=w300" alt="Logo 2"></div>
+</div>
+<!-- MENU BAR -->
+<div class="main-menu-bar">
+    <div class="menu-group">
+        <div class="menu-item">📸 Studio</div>
+        <div class="submenu">
+            <a href="https://remove.photos/" target="_blank">Remove Background(remove.photos)</a>
+            <a href="https://www.remove.bg/" target="_blank">Remove Background(remove.bg)</a>
+            <a href="https://www.adobe.com/express/feature/image/remove-background" target="_blank">Remove Background(adobe.remove)</a>
+            <a href="https://www.photogrid.app/en/image-enhancer/" target="_blank">Image Enhancer Free</a>
+         </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">💻 Jan Seva Kendra</div>
+        <div class="submenu">
+            <a href="https://edistrict.up.gov.in/edistrictup/" target="_blank">e-District</a>
+            <a href="https://digitalseva.csc.gov.in/" target="_blank">CSC</a>
+            <a href="https://www.myutiitsl.com/panonlineservices/CSCLogin" target="_blank">UTIITSL PAN Service</a>
+            <a href="javascript:void(0)" id="openWhatsAppModal">Send WhatsApp Number</a>
+            <a href="https://myaadhaar.uidai.gov.in/" target="_blank">Aadhaar</a>
+            <a href="https://register.eshram.gov.in/#/web-dashboard" target="_blank">e-Shram</a>
+            <a href="https://retail.sahaj.co.in/hi/home" target="_blank">Sahaj</a>
+            <a href="https://nregastrep.nic.in/netnrega/Homedist.aspx?flag_debited=&is_statefund=&lflag=eng&district_code=3128&district_name=KHERI&state_name=UTTAR%20PRADESH&state_Code=31" target="_blank">NAREGA Job Card Print</a>
+            <a href="https://nfsa.gov.in/public/frmPublicGetMyRCDetails.aspx" target="_blank">राशन कार्ड के प्रिंट निकालने के लिए</a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">🥦 Kisan </div>
+        <div class="submenu">
+            <a href="https://upbhulekh.gov.in/public/public_ror/Public_ROR.jsp" target="_blank">Bhulekh (Kahtuni)</a>
+            <a href="https://upbhunaksha.gov.in/" target="_blank">भू -नक्सा </a>
+            <a href="https://pmkisan.gov.in/homenew.aspx?aspxerrorpath=/BeneficiaryStatus_New.aspx" target="_blank">Kisan Samman</a>
+            <a href="https://upfr.agristack.gov.in/farmer-registry-up/#/" target="_blank">Farmer-Registry</a>
+            <a href="https://enquiry.caneup.in/GrwEnquiry.aspx" target="_blank">Up Cane Enquiry</a>
+            <a href="https://igrsup.gov.in/igrsup/newPropertySearchAction" target="_blank">अपनी प्लॉट का डाटा पाने के लिए</a>
+            <a href="https://agridarshan.up.gov.in/" target="_blank">कृषि विभाग </a>
+            <a href="https://pgportal.gov.in/CscHome" target="_blank">Online Complaint Kisan Samman</a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">🖋 PDF AND IMAGE TOOL </div>
+        <div class="submenu">
+            <a href="https://www.11zon.com/" target="_blank">Compress And merge Pdf or Image</a>
+            <a href="https://image.pi7.org/" target="_blank">MANAGE IMAGE PX AND KB  SIZE</a>
+            <a href="https://smallpdf.com/merge-pdf" target="_blank">PDF Merge</a>
+            <a href="https://lightpdf.com/" target="_blank">Edit PDF</a>
+            <a href="https://www.sejda.com/pdf-editor" target="_blank">Edit PDF Best </a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">👆Election Commission </div>
+        <div class="submenu">
+            <a href="https://voters.eci.gov.in/login" target="_blank">New Votar apply</a>
+            <a href="https://electoralsearch.eci.gov.in/" target="_blank">Votar Search</a>
+            <a href="http://sec.up.nic.in/site/publication.aspx" target="_blank">Election Commission</a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">⭐ Important Links</div>
+        <div class="submenu" style="height:400px;overflow:scroll">
+            <a href="#" id="driveInfoLink">Google Drive link convert to image link</a>
+            <a href="https://ors.gov.in/orsportal/" target="_blank">Lucknow/Other Govt. Hospital Appointment</a>
+            <a href="https://docs.google.com/forms/u/0/" target="_blank">Google Form</a>
+            <a href="https://www.krutidevunicodeconverter.com/cgi-sys/suspendedpage.cgi" target="_blank">Unicode to Krutidev (Hindi) Font</a>
+            <a href="https://www.prepostseo.com/image-to-text" target="_blank">Image to Text</a>
+            <a href="https://ors.gov.in/copp/hs?NICSecurityORS=BY61-CWWG-TREN-XGUJ-0IDQ-ULQI-GR4S-SABS" target="_blank">Lucknow Hospital Booking</a>
+            <a href="https://mazterize.cc/category/data-recovery/" target="_blank">Free Software</a>
+            <a href="https://app.creatify.ai/" target="_blank">Text to Audio</a>
+            <a href="https://abvmucet25.co.in/" target="_blank">Atal Bihari Bajpai University</a>
+            <a href="https://www.youtube.com/channel/UCJrf364HUtOiDfITZYZKkHw?sub_confirmation=1" target="_blank">Subscribe My Channel</a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">📞 Contact</div>
+        <div class="submenu">
+            <a href="mailto:nitinmamri@gmail.com">Email Us</a>
+            <a href="tel:+919956691683">Call Now</a>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT -->
+<div class="page-wrapper">
+    <div class="main-content">
+        <div class="watermark"></div>
+        <h2>हमारी सेवाएँ</h2>
+        <p><strong>📸 Nitin Photo Studio:</strong> नितिन फोटो स्टूडियो आपके जीवन के हर खास पल को संजोने के लिए समर्पित है। यहां शादी, बर्थडे, मैटरनिटी शूट, आउटडोर फोटोशूट और इवेंट फोटोग्राफी की बेहतरीन सेवाएँ उपलब्ध हैं। उन्नत कैमरा तकनीक एवं अनुभवी टीम के साथ, हम आपके यादगार लम्हों को खूबसूरत तस्वीरों में कैद करते हैं, ताकि आपकी खुशियों को बरसों तक संजोया जा सके।</p>
+        <p><strong>🛠 Jan Seva Kendra:</strong> जन सेवा केन्द्र पर आपको एक ही छत के नीचे अनेक प्रकार की सरकारी और डिजिटल सेवाएँ प्राप्त होती हैं। आधार कार्ड, पैन कार्ड, ऑनलाइन फॉर्म, वोटर ID, ड्राइविंग लाइसेंस जैसी तमाम सरकारी सुविधाएं यहां आसान और सरल प्रक्रिया में उपलब्ध कराई जाती हैं। हमारा उद्देश्य है कि गाँव और शहर के सभी लोगों को तकनीकी और सरकारी सेवाएँ सुलभता से प्राप्त हो सकें। </p>
+        <p><strong>🗃️ स्पेशल = डिलीटेड डेटा रिकवरी:</strong> आज के डिजिटल युग में कई बार जरूरी फाइलें या फोटो गलती से डिलीट हो जाती हैं, जिससे परेशानी बढ़ जाती है। हमारी स्पेशल डाटा रिकवरी सेवा के माध्यम से, आप अपने डिलीट हुए फोटो, वीडियो, डॉक्युमेंट्स या अन्य महत्वपूर्ण डेटा को फिर से सुरक्षित प्राप्त कर सकते हैं। हमारे पास अपडेटेड सॉफ़्टवेयर और अनुभवी टेक्निकल टीम है, जो हार्ड डिस्क, पेन ड्राइव, मेमोरी कार्ड आदि से डाटा रिकवर करने में आपकी पूरी मदद करती है। आपकी जानकारी गोपनीय और सुरक्षित रखी जाती है, ताकि आपको अपनी खोई हुई फाइलें फिर से आसानी से मिल जाएं।</p>
+    </div>
+</div>
+
+<!-- WhatsApp Number Modal Background -->
+<div id="modalBg"></div>
+<!-- WhatsApp Number Modal -->
+<div id="whatsappModal">
+  <h3>10-अंकों का मोबाइल नंबर दर्ज करें</h3>
+  <input type="text" id="mobileNumber" maxlength="10" placeholder="मोबाइल नंबर" autofocus />
+  <br />
+  <button id="whatsappGoBtn">खोजें</button>
+  <button id="whatsappCancelBtn">रद्द करें</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <h2>📍 Contact Us</h2>
+            <p><strong>Address:</strong> Vill And Post -Mamri ,Dist-Kheri, UP, India</p>
+            <p><strong>Phone:</strong> +91 9956691683</p>
+            <p><strong>Email:</strong> nitinmamri@gmail.com</p>
+        </div>
+        <div class="footer-middle">
+            <h2>🌐 Follow Us</h2>
+            <style>
+.social-icons img {
+  width: 2em;
+  height: 2em;
+  vertical-align: middle;
+  margin: 0 0.2em; /* Thoda spacing left/right */
+}
+</style>
+<div class="social-icons">
+  <a href="https://www.facebook.com/nitin.verma.161446" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/1HLVR59xeWhytgL2eOzaR9rIhozfCZGTm=w300" alt="Facebook">
+  </a>
+  <a href="https://www.instagram.com/nitinkaima/" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/1BFfWiThcj7PJq9efurT3LoW8EMDEj3RK=w300" alt="Instagram">
+  </a>
+  <a href="https://wa.me/919956691683" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/18QfDb5RTWyVdovXTyTtZ_0qO23FAN4_J=w300" alt="WhatsApp">
+  </a>
+  <a href="mailto:nitinmamri@gmail.com" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/1eOOOW4GPpe4lqT9CuZPBqvFp9HWGsbHm=w300" alt="Email">
+  </a>
+  <a href="https://www.youtube.com/channel/UCJrf364HUtOiDfITZYZKkHw?sub_confirmation=1" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/13mVnVoAGNh76Rafi-j-BBESkARzg1xtt=w300" alt="YouTube">
+  </a>
+</div>
+        </div>
+        <div class="footer-right">
+            <h2>🕒 Opening Hours</h2>
+            <p>Mon - Sat: 7:00 AM - 8:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Nitin Official</p>
+    </div>
+</footer>
+
+<script>
+// Menu Click Animation
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', e => {
+        e.stopPropagation();
+        item.classList.remove('clicked');
+        void item.offsetWidth;
+        item.classList.add('clicked');
+        const thisSub = item.parentElement.querySelector('.submenu');
+        const isOpen = thisSub.style.display === 'flex';
+        document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+        if (!isOpen) thisSub.style.display = 'flex';
+    });
+});
+document.addEventListener('click', () => {
+    document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+});
+// Dust Effect
+function createDust(x, y) {
+    for (let i = 0; i < 12; i++) {
+        let particle = document.createElement('div');
+        particle.className = 'dust-particle';
+        document.body.appendChild(particle);
+        let size = Math.random() * 8 + 4;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${x - size / 2}px`;
+        particle.style.top = `${y - size / 2}px`;
+        let angle = Math.random() * 2 * Math.PI;
+        let distance = Math.random() * 80 + 20;
+        let tx = Math.cos(angle) * distance;
+        let ty = Math.sin(angle) * distance;
+        particle.animate(
+            [{ transform: 'translate(0,0) scale(1)', opacity: 1 },
+             { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }],
+            { duration: 800, easing: 'ease-out' }
+        );
+        setTimeout(() => particle.remove(), 800);
+    }
+}
+document.addEventListener('click', e => {
+    if (!e.target.closest('.main-menu-bar')) {
+        createDust(e.clientX, e.clientY);
+    }
+});
+document.addEventListener('touchstart', e => {
+    if (e.touches.length > 0 && !e.target.closest('.main-menu-bar')) {
+        createDust(e.touches[0].clientX, e.touches[0].clientY);
+    }
+});
+
+// WhatsApp Modal Controls
+const modal = document.getElementById('whatsappModal');
+const modalBg = document.getElementById('modalBg');
+const input = document.getElementById('mobileNumber');
+const goBtn = document.getElementById('whatsappGoBtn');
+const cancelBtn = document.getElementById('whatsappCancelBtn');
+const openModalLink = document.getElementById('openWhatsAppModal');
+
+function showWhatsAppModal() {
+  modal.style.display = 'block';
+  modalBg.style.display = 'block';
+  input.value = '';
+  input.focus();
+}
+
+function hideWhatsAppModal() {
+  modal.style.display = 'none';
+  modalBg.style.display = 'none';
+}
+
+openModalLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  showWhatsAppModal();
+});
+
+goBtn.addEventListener('click', () => {
+  const num = input.value.trim();
+  if (/^\d{10}$/.test(num)) {
+    window.location.href = 'https://wa.me/91' + num;
+  } else {
+    alert('कृपया 10 अंकों का सही मोबाइल नंबर दर्ज करें।');
+    input.focus();
+  }
+});
+
+cancelBtn.addEventListener('click', () => {
+  hideWhatsAppModal();
+});
+
+modalBg.addEventListener('click', () => {
+  hideWhatsAppModal();
+});
+
+input.addEventListener('keyup', (event) => {
+  if (event.key === "Enter") {
+    goBtn.click();
+  }
+});
+// --- GOOGLE DRIVE LINK TO IMAGE CONVERTER LOADER ---
+document.addEventListener('DOMContentLoaded', function(){
+    var driveLinkButton = document.getElementById('driveInfoLink');
+    if(driveLinkButton){
+        driveLinkButton.addEventListener('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+            var mainContent = document.querySelector('.main-content');
+            if(mainContent){
+                mainContent.innerHTML = `
+                    <h2>Google Drive Link to Image Converter</h2>
+                    <input type="text" id="driveLink" placeholder="Google Drive file link yahan paste karein" style="padding:8px; width:60%;" />
+                    <button id="convertBtn" style="padding:8px 18px; background:#4CAF50; color:#fff; margin-left: 10px;">Convert & Show Image</button>
+                    <div id="result" style="margin-top:20px;"></div>
+                    <style>
+                        #copyButton {background: #2196F3; border: none; padding: 6px 12px; color: white; border-radius: 4px; cursor: pointer;}
+                        #copyButton:active {background: #1769AA;}
+                        img {margin-top:10px; max-width:300px; border-radius: 6px;}
+                    </style>
+                `;
+                setTimeout(function() {
+                    var btn = document.getElementById('convertBtn');
+                    if(btn){
+                        btn.onclick = function() {
+                            var driveLink = document.getElementById('driveLink').value.trim();
+                            var imageLink = convertDriveLinkToImage(driveLink);
+                            var resultDiv = document.getElementById('result');
+                            if (imageLink) {
+                                resultDiv.innerHTML = '<strong>Converted Image Link:</strong><br>' +
+                                    '<a href="' + imageLink + '" target="_blank" id="imageUrl">' + imageLink + '</a>' +
+                                    '<button id="copyButton" style="margin-left:8px;">Copy Link</button>' +
+                                    '<br><img src="' + imageLink + '" alt="Converted Image">';
+                                var cb = document.getElementById('copyButton');
+                                if(cb) {
+                                    cb.onclick = function() {
+                                        copyToClipboard(imageLink);
+                                    }
+                                }
+                            } else {
+                                resultDiv.innerHTML = "<span style='color:red;'>Invalid Google Drive link format.</span>";
+                            }
+                        }
+                    }
+                }, 50);
+            }
+        });
+    }
+});
+// --- Link Converter Helper ---
+function convertDriveLinkToImage(driveLink) {
+    const regex = /\/d\/([a-zA-Z0-9_-]+)/;
+    const match = driveLink.match(regex);
+    if (match && match[1]) {
+        const fileId = match[1];
+        return 'https://lh3.googleusercontent.com/d/' + fileId + '=w300';
+    }
+    return null;
+}
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Link copied!');
+        resetToHomeContent();
+    }).catch(function(err) {
+        alert('Copy failed!');
+    });
+}
+// होम पेज कंटेंट को रीसेट करने वाला फ़ंक्शन
+function resetToHomeContent() {
+    var mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+        mainContent.innerHTML = `
+            <div class="watermark"></div>
+            <h2>हमारा कार्य</h2>
+            <p><strong>📸 Nitin Photo Studio:</strong> नितिन फोटो स्टूडियो आपके जीवन के हर खास पल को संजोने के लिए समर्पित है। यहाँ शादी, बर्थडे, मैटरनिटी शूट, आउटडोर फोटोशूट और इवेंट फोटोग्राफी की बेहतरीन सेवाएँ उपलब्ध हैं। उन्नत कैमरा तकनीक एवं अनुभवी टीम के साथ, हम आपके यादगार लम्हों को खूबसूरत तस्वीरों में कैद करते हैं, ताकि आपकी खुशियों को बरसों तक संजोया जा सके।</p>
+            <p><strong>🛠 Jan Seva Kendra:</strong> जन सेवा केन्द्र पर आपको एक ही छत के नीचे अनेक प्रकार की सरकारी और डिजिटल सेवाएँ प्राप्त होती हैं। आधार कार्ड, पैन कार्ड, ऑनलाइन फ़ॉर्म, वोटर ID, ड्राइविंग लाइसेंस जैसी तमाम सरकारी सुविधाएं यहाँ आसान और सरल प्रक्रिया में उपलब्ध कराई जाती हैं। हमारा उद्देश्य है कि गाँव और शहर के सभी लोगों को तकनीकी और सरकारी सेवाएँ सुलभता से प्राप्त हो सकें।</p>
+            <p><strong>🗃️ स्पेशल = डिलीटेड डेटा रिकवरी:</strong> आज के डिजिटल युग में कई बार जरूरी फाइलें या फोटो गलती से डिलीट हो जाती हैं, जिससे परेशानी बढ़ जाती है। हमारी स्पेशल डाटा रिकवरी सेवा के माध्यम से, आप अपने डिलीट हुए फोटो, वीडियो, डॉक्युमेंट्स या अन्य महत्वपूर्ण डेटा को फिर से सुरक्षित प्राप्त कर सकते हैं। हमारे पास अपडेटेड सॉफ़्टवेयर और अनुभवी टेक्निकल टीम है, जो हार्ड डिस्क, पेन ड्राइव, मेमोरी कार्ड आदि से डाटा रिकवर करने में आपकी पूरी मदद करती है। आपकी जानकारी गोपनीय और सुरक्षित रखी जाती है, ताकि आपको अपनी खोई हुई फाइलें फिर से आसानी से मिल जाएं।</p>
+        `;
+    }
+}
+</script>
+</body>
+</html>
