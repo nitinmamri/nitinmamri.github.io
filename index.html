@@ -88,10 +88,24 @@ html, body {
 }
 /* MENU */
 .main-menu-bar {
-    background: linear-gradient(180deg, #000000, #458000);
     display: flex;
     flex-wrap: wrap;
     padding: 8px;
+    background: linear-gradient(90deg, #000000, #458000, #004400, #458000, #000000);
+    background-size: 200% 200%;
+    animation: gradientSlide 6s ease-in-out infinite;
+}
+
+@keyframes gradientSlide {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 .menu-group {
     position: relative;
@@ -648,6 +662,7 @@ function resetToHomeContent() {
 </script>
 </body>
 </html>
+
 
 
 
