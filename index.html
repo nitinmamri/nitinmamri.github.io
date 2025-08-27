@@ -4,6 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NITIN PHOTO STUDIO AND JAN SEVA KENDRA</title>
+    <script>// mobile menu click
+    jQuery(document).ready(function(){
+        jQuery(".top-right").click(function(){
+            jQuery(".menu-icon").toggleClass("open");              // top-right पर open class add/remove
+            jQuery(".main-menu-bar").toggleClass("menuopen"); // main-menu-bar पर menuopen class add/remove
+        });
+    });</script>
 <style>
 html, body {
     margin: 0;
@@ -239,14 +246,69 @@ html, body {
   margin: 10px 5px 0 5px;
   cursor: pointer;
 }
+    @media (max-width:768px){
+
+    .top-title{
+        flex-wrap: wrap;        height: auto;
+        padding: 10px 10px;
+    }
+    .logo img{
+        height: 90px;
+        width: 90px;
+    }
+    .top-title .logo{
+        order: 1;
+    }
+    .top-title h1{
+        order:2;       
+        font-size: 8vw;
+        line-height: 1;
+    }
+    .top-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu-icon{
+        background: url(https://lh3.googleusercontent.com/d/1DYEZ0VdjaXeJsu9geE7bOUW81Gq2ILCE=w300);
+        width: 52px;
+        height: 35px;
+        display: block;
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
+        background-size: 85px;
+    }
+    .menu-icon.open{
+        background-position: -38px 0;
+    }
+    .main-menu-bar {
+        display: none;
+    }
+    .main-menu-bar.menuopen {
+        display: flex;
+        gap:8px;
+    }
+    .menu-group {
+        width: 100%;
+        margin: 0;
+    }
+    .submenu{
+        min-width:100%;
+    }
+}
 </style>
 </head>
 <body>
 <!-- HEADER -->
-<div class="top-title">
-    <div class="logo"><img src="https://lh3.googleusercontent.com/d/1tIE79XQXmSJ-46U44ztAA2sWNqdbGHWT=w300" alt="Logo 1"></div>
-    <h1>NITIN PHOTO STUDIO<br>JAN SEVA KENDRA</h1>
-    <div class="logo"><img src="https://lh3.googleusercontent.com/d/1auwk9cZeynDGEWF9jFXsUL9kjvGY5LBx=w300" alt="Logo 2"></div>
+<div class="top-wrap">
+    <div class="top-title top-left">
+        <div class="logo"><img src="https://lh3.googleusercontent.com/d/1tIE79XQXmSJ-46U44ztAA2sWNqdbGHWT=w300" alt="Logo 1"></div>
+        <h1>NITIN PHOTO STUDIO<br>JAN SEVA KENDRA</h1>
+        <div class="logo"><img src="https://lh3.googleusercontent.com/d/1auwk9cZeynDGEWF9jFXsUL9kjvGY5LBx=w300" alt="Logo 2"></div>
+    </div>
+    <div class="top-right">
+        <span class="menu-icon"></span>
+    </div>
 </div>
 <!-- MENU BAR -->
 <div class="main-menu-bar">
@@ -585,6 +647,7 @@ function resetToHomeContent() {
 </script>
 </body>
 </html>
+
 
 
 
