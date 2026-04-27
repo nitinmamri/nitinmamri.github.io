@@ -33,10 +33,53 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #ffe5ec, #fdc1de);
-    overflow-x: hidden;
-    color: #000;
+    .fake-body {
+    font-family: 'Segoe UI', sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    padding: 40px 0;
+}
+
+.fake-body .card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 450px;
+}
+
+.fake-body input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.fake-body button {
+    width: 95%;
+    padding: 12px;
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+.fake-body button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 17px rgba(0,0,0,0.5);
+    }
+
+.fake-body #result {
+    margin-top: 20px;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 10px;
+}
   }
 
   /* UPDATED HEADER SECTION */
@@ -588,6 +631,7 @@
                 </div>
             </div>
             <a href="https://nfsa.gov.in/public/frmPublicGetMyRCDetails.aspx" target="_blank">राशन कार्ड का प्रिंट निकालने के लिए</a>
+            <a href="#" id="ageCalculatorLink">📅 Age Calculator</a>
             <a href="javascript:void(0)" id="openWhatsAppModal">Send WhatsApp without Number Save </a>
             <div class="submenu-csc-wrapper">
                 <a text="" target="_blank">Penson</a>
@@ -760,6 +804,69 @@
 </footer>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function(){
+
+    var ageBtn = document.getElementById('ageCalculatorLink');
+
+    if(ageBtn){
+        ageBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+
+            var mainContent = document.querySelector('.main-content');
+
+            mainContent.innerHTML = `
+    <h2 style="text-align:center; margin-bottom:20px;">📅 Age Calculator</h2>
+
+    <div class="fake-body">
+        <div class="card">
+
+            <label>Enter Date of Birth</label><br>
+            <input type="date" id="dob"><br>
+
+            <label>Enter date</label><br>
+            <label>(जब तक की उम्र निकालनी है)</label><br>
+            <input type="date" id="secondDate"><br>
+
+                        <button onclick="calculateDiff()">Calculate</button>
+
+                        <div id="result"></div>
+
+                    </div>
+                </div>
+            `;
+        });
+    }
+});
+
+function calculateDiff() {
+    let dob = new Date(document.getElementById("dob").value);
+    let second = new Date(document.getElementById("secondDate").value);
+
+    if (!dob || !second || isNaN(dob) || isNaN(second)) {
+        document.getElementById("result").innerHTML = "⚠️ Please select both dates!";
+        return;
+    }
+
+    let years = second.getFullYear() - dob.getFullYear();
+    let months = second.getMonth() - dob.getMonth();
+    let days = second.getDate() - dob.getDate();
+
+    if (days < 0) {
+        months--;
+        days += new Date(second.getFullYear(), second.getMonth(), 0).getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    document.getElementById("result").innerHTML =
+        `🎯 <b>${years} Years, ${months} Months, ${days} Days</b>`;
+}
 // Menu Click Animation
 document.querySelectorAll('.menu-item').forEach(item => {
     item.addEventListener('click', e => {
@@ -942,16 +1049,3 @@ function resetToHomeContent() {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
