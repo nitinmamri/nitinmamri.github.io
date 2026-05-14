@@ -676,6 +676,7 @@
             <a href="https://enquiry.caneup.in/GrwEnquiry.aspx" target="_blank">Up Cane Enquiry</a>
             <a href="https://igrsup.gov.in/igrsup/newPropertySearchAction" target="_blank">अपनी प्लॉट का डाटा पाने के लिए</a>
             <a href="https://agridarshan.up.gov.in/" target="_blank">कृषि विभाग </a>
+            <a href="#" id="hecterToBighaCalculatorLink">हेक्टेयर से बीघा-डिसमिल Calculator</a>
         </div>
     </div>
     <div class="menu-group">
@@ -966,8 +967,393 @@ input.addEventListener('keyup', (event) => {
     goBtn.click();
   }
 });
+// --- HECTARE TO BIGHA CALCULATOR LOADER ---
 
-// --- GOOGLE DRIVE LINK TO IMAGE CONVERTER LOADER ---
+
+document.addEventListener('DOMContentLoaded', function(){
+
+    var hecterBtn =
+        document.getElementById('hecterToBighaCalculatorLink');
+
+    if(hecterBtn){
+
+        hecterBtn.addEventListener('click', function(e){
+
+            e.preventDefault();
+
+            e.stopPropagation();
+
+            // सभी submenu hide
+            document.querySelectorAll('.submenu')
+            .forEach(s => s.style.display = 'none');
+
+            var mainContent =
+                document.querySelector('.main-content');
+
+            mainContent.innerHTML = `
+
+<style>
+
+.kisan-wrapper{
+
+    min-height:550px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px 15px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+    url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop');
+
+    background-size:cover;
+
+    background-position:center;
+
+    border-radius:25px;
+}
+
+.kisan-card{
+
+    width:100%;
+
+    max-width:520px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(14px);
+
+    border:2px solid rgba(255,255,255,0.2);
+
+    border-radius:28px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.45),
+    inset 0 1px 2px rgba(255,255,255,0.25);
+
+    animation:zoomIn 0.7s ease;
+}
+
+@keyframes zoomIn{
+
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.kisan-icon{
+
+    font-size:75px;
+
+    margin-bottom:10px;
+
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.kisan-title{
+
+    color:#fff;
+
+    font-size:36px;
+
+    font-weight:900;
+
+    text-shadow:0 2px 12px rgba(0,0,0,0.5);
+
+    margin-bottom:12px;
+}
+
+.kisan-location{
+
+    display:inline-block;
+
+    background:linear-gradient(90deg,#ffe600,#ff9800);
+
+    color:#000;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.35);
+}
+
+.kisan-input{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:18px;
+
+    font-size:22px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,0.95);
+
+    margin-bottom:20px;
+
+    box-shadow:
+    inset 0 2px 10px rgba(0,0,0,0.15);
+
+    transition:0.3s;
+}
+
+.kisan-input:focus{
+
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 18px rgba(0,255,100,0.8),
+    inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.kisan-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:21px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    background:
+    linear-gradient(135deg,#11998e,#38ef7d);
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,0.35);
+
+    transition:0.3s;
+}
+
+.kisan-btn:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.02);
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,0.45);
+}
+
+.kisan-result{
+
+    margin-top:25px;
+
+    min-height:95px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.14);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:32px;
+
+    font-weight:900;
+
+    text-shadow:0 2px 10px rgba(0,0,0,0.6);
+
+    box-shadow:
+    0 0 18px rgba(0,255,120,0.35);
+
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+
+    from{
+        box-shadow:0 0 10px rgba(255,255,255,0.2);
+    }
+
+    to{
+        box-shadow:0 0 25px rgba(0,255,100,0.7);
+    }
+}
+
+.kisan-note{
+
+    margin-top:18px;
+
+    color:#fff;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+@media(max-width:768px){
+
+    .kisan-title{
+        font-size:26px;
+    }
+
+    .kisan-result{
+        font-size:24px;
+    }
+
+    .kisan-card{
+        padding:25px 18px;
+    }
+}
+
+</style>
+
+<div class="kisan-wrapper">
+
+    <div class="kisan-card">
+
+        <div class="kisan-icon">🌾</div>
+
+        <div class="kisan-title">
+            हेक्टेयर से बीघा-डिसमिल
+        </div>
+
+        <div class="kisan-location">
+            📍 लखीमपुर खीरी
+        </div>
+
+        <input
+            type="number"
+            id="hectare"
+            class="kisan-input"
+            step="0.0001"
+            placeholder="हेक्टेयर दर्ज करें"
+            oninput="calculateHectare()"
+        >
+
+        <button
+            class="kisan-btn"
+            onclick="calculateHectare()"
+        >
+            🌱 जमीन Calculate करें
+        </button>
+
+        <div
+            class="kisan-result"
+            id="hectareResult"
+        >
+            🌾 परिणाम यहाँ दिखेगा
+        </div>
+
+        <div class="kisan-note">
+
+            1 बीघा = 0.065 हेक्टेयर<br>
+
+            1 बीघा = 16 डिसमिल
+
+        </div>
+
+    </div>
+
+</div>
+
+            `;
+        });
+    }
+});
+
+function calculateHectare(){
+
+    let hectare =
+        parseFloat(
+            document.getElementById("hectare").value
+        );
+
+    if(isNaN(hectare)){
+
+        document.getElementById(
+            "hectareResult"
+        ).innerHTML = "🌾 परिणाम यहाँ दिखेगा";
+
+        return;
+    }
+
+    // कुल बीघा
+    let totalBigha = hectare / 0.065;
+
+    // पूरा बीघा
+    let bigha = Math.floor(totalBigha);
+
+    // बचा हुआ भाग
+    let remain = totalBigha - bigha;
+
+    // डिसमिल
+    let dismil = Math.round(remain * 16);
+
+    // 16 डिसमिल होने पर
+    if(dismil == 16){
+
+        bigha += 1;
+
+        dismil = 0;
+    }
+
+    document.getElementById(
+        "hectareResult"
+    ).innerHTML =
+
+    "🌾 " + bigha +
+    " बीघा " +
+    dismil +
+    " डिसमिल";
+}
+    // --- GOOGLE DRIVE LINK TO IMAGE CONVERTER LOADER ---
 document.addEventListener('DOMContentLoaded', function(){
     var driveLinkButton = document.getElementById('driveInfoLink');
     if(driveLinkButton){
