@@ -562,7 +562,67 @@
 </style>
 </head>
 <body>
-<!-- HEADER -->
+<!-- Password Popup -->
+
+<div id="passPopup" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.3);
+z-index:99999;
+text-align:center;
+min-width:280px;
+">
+
+<h3>🔒 पासवर्ड दर्ज करें</h3>
+
+<input
+type="password"
+id="kisanPass"
+placeholder="Password"
+style="
+padding:10px;
+width:220px;
+border:1px solid #ccc;
+border-radius:5px;
+">
+
+<br><br>
+
+<button onclick="checkKisanPassword()"
+style="
+padding:10px 20px;
+background:#28a745;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+">
+Login
+</button>
+
+<button onclick="
+document.getElementById('passPopup').style.display='none'
+"
+style="
+padding:10px 20px;
+background:red;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-left:5px;
+">
+Close
+</button>
+
+</div>
+    <!-- HEADER -->
 <div class="top-title">
   <div class="logos">
     <div class="logo-box">
@@ -680,6 +740,13 @@
             <a href="https://igrsup.gov.in/igrsup/newPropertySearchAction" target="_blank">अपनी प्लॉट का डाटा पाने के लिए</a>
             <a href="https://agridarshan.up.gov.in/" target="_blank">कृषि विभाग </a>
             <a href="#" id="hecterToBighaCalculatorLink">हेक्टेयर से बीघा-डिसमिल Calculator</a>
+            
+            <div class="submenu-csc-wrapper">
+                <a href="javascript:void(0)" onclick="openKisanPassword">किसान कार्ड</a>
+                <div class="submenu-csc">
+                    <a href="javascript:void(0)" onclick="openKisanPassword()">पासवर्ड से खोलें</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="menu-group">
@@ -1889,7 +1956,96 @@ function copyToClipboard(text) {
         alert('Copy failed!');
     });
 }
-// होम पेज कंटेंट को रीसेट करने वाला फ़ंक्शन
+
+function openKisanPassword() {
+    document.getElementById("passPopup").style.display = "block";
+}
+
+function checkKisanPassword() {
+
+    const pass =
+        document.getElementById("kisanPass").value;
+
+    if(!pass) return;
+
+    fetch("https://script.google.com/macros/s/AKfycbxqWLa6wTaVMb_9UAgSlcILxR6Z7Pj9e4XIyTpv0zB6HfJJgvVSnhgmkS2P3CdktZgA/exec", {
+        method: "POST",
+        body: pass
+    })
+    .then(res => res.text())
+    .then(data => {
+
+        if(data === "OK") {
+
+            document.getElementById("passPopup").style.display = "none";
+
+            openKisanCardPage();
+
+        } else {
+
+            alert("Wrong Password (Please Contact Nitin Verma)");
+
+        }
+
+    });
+
+}
+function openKisanCardPage() {
+
+    const mainContent =
+        document.querySelector('.main-content');
+
+    mainContent.innerHTML = `
+        <div class="watermark"></div>
+
+        <h2 style="text-align:center;">🌱🥦 किसान कार्ड</h2>
+
+<p style="text-align:center;">
+    कृपया गलत जानकारी न भरें
+</p>
+
+        <div style="display:flex;flex-direction:column;gap:15px;margin-top:20px;">
+
+            <a href="https://upfr.agristack.gov.in/farmer-registry-up/#/"
+               target="_blank"
+               style="
+                   display:flex;
+                   align-items:center;
+                   gap:10px;
+                   background:#28a745;
+                   color:white;
+                   padding:15px;
+                   border-radius:10px;
+                   text-decoration:none;
+                   font-size:18px;
+                   font-weight:bold;
+                   box-shadow:0 3px 8px rgba(0,0,0,0.2);
+               ">
+               🌾 Farmer Registry
+            </a>
+
+            <a href="https://nitinmamri.github.io/formercard/"
+               target="_blank"
+               style="
+                   display:flex;
+                   align-items:center;
+                   gap:10px;
+                   background:#007bff;
+                   color:white;
+                   padding:15px;
+                   border-radius:10px;
+                   text-decoration:none;
+                   font-size:18px;
+                   font-weight:bold;
+                   box-shadow:0 3px 8px rgba(0,0,0,0.2);
+               ">
+               📋 Farmer Card
+            </a>
+
+        </div>
+    `;
+}
+
 function resetToHomeContent() {
     var mainContent = document.querySelector('.main-content');
     if (mainContent) {
