@@ -1962,11 +1962,10 @@ function openKisanPassword() {
 }
 
 function checkKisanPassword() {
+    const pass = document.getElementById("kisanPass").value;
+    if (!pass) return;
 
-    const pass =
-        document.getElementById("kisanPass").value;
-
-    if(!pass) return;
+    const newTab = window.open("", "_blank");
 
     fetch("https://script.google.com/macros/s/AKfycbxqWLa6wTaVMb_9UAgSlcILxR6Z7Pj9e4XIyTpv0zB6HfJJgvVSnhgmkS2P3CdktZgA/exec", {
         method: "POST",
@@ -1974,76 +1973,20 @@ function checkKisanPassword() {
     })
     .then(res => res.text())
     .then(data => {
-
-        if(data === "OK") {
-
+        if (data.startsWith("OK|")) {
             document.getElementById("passPopup").style.display = "none";
 
-            openKisanCardPage();
-
+            const url = data.split("|")[1];
+            newTab.location.href = url;
         } else {
-
+            if (newTab) newTab.close();
             alert("Wrong Password (Please Contact Nitin Verma)");
-
         }
-
+    })
+    .catch(() => {
+        if (newTab) newTab.close();
+        alert("Server Error");
     });
-
-}
-function openKisanCardPage() {
-
-    const mainContent =
-        document.querySelector('.main-content');
-
-    mainContent.innerHTML = `
-        <div class="watermark"></div>
-
-        <h2 style="text-align:center;">🌱🥦 किसान कार्ड</h2>
-
-<p style="text-align:center;">
-    कृपया गलत जानकारी न भरें
-</p>
-
-        <div style="display:flex;flex-direction:column;gap:15px;margin-top:20px;">
-
-            <a href="https://upfr.agristack.gov.in/farmer-registry-up/#/"
-               target="_blank"
-               style="
-                   display:flex;
-                   align-items:center;
-                   gap:10px;
-                   background:#28a745;
-                   color:white;
-                   padding:15px;
-                   border-radius:10px;
-                   text-decoration:none;
-                   font-size:18px;
-                   font-weight:bold;
-                   box-shadow:0 3px 8px rgba(0,0,0,0.2);
-               ">
-               🌾 Farmer Registry
-            </a>
-
-            <a href="https://nitinmamri.github.io/formercard/"
-               target="_blank"
-               style="
-                   display:flex;
-                   align-items:center;
-                   gap:10px;
-                   background:#007bff;
-                   color:white;
-                   padding:15px;
-                   border-radius:10px;
-                   text-decoration:none;
-                   font-size:18px;
-                   font-weight:bold;
-                   box-shadow:0 3px 8px rgba(0,0,0,0.2);
-               ">
-               📋 Farmer Card
-            </a>
-
-        </div>
-    `;
 }
 
 function resetToHomeContent() {
