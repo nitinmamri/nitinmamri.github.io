@@ -562,7 +562,7 @@
 </style>
 </head>
 <body>
-<!-- Password Popup -->
+    <!-- Password Popup -->
 
 <div id="passPopup" style="
 display:none;
@@ -594,7 +594,7 @@ border-radius:5px;
 
 <br><br>
 
-<button onclick="checkKisanPassword()"
+<button id="loginBtn"
 style="
 padding:10px 20px;
 background:#28a745;
@@ -740,13 +740,7 @@ Close
             <a href="https://igrsup.gov.in/igrsup/newPropertySearchAction" target="_blank">अपनी प्लॉट का डाटा पाने के लिए</a>
             <a href="https://agridarshan.up.gov.in/" target="_blank">कृषि विभाग </a>
             <a href="#" id="hecterToBighaCalculatorLink">हेक्टेयर से बीघा-डिसमिल Calculator</a>
-            
-            <div class="submenu-csc-wrapper">
-                <a href="javascript:void(0)" onclick="openKisanPassword">किसान कार्ड</a>
-                <div class="submenu-csc">
-                    <a href="javascript:void(0)" onclick="openKisanPassword()">पासवर्ड से खोलें</a>
-                </div>
-            </div>
+            <a href="javascript:void(0)" onclick="openKisanPassword()">किसान कार्ड <span class="badge">Locked</span></a>
         </div>
     </div>
     <div class="menu-group">
@@ -785,7 +779,12 @@ Close
             <a href="https://www.indiapost.gov.in/" target="_blank">India Post Track Consignment</a>
             <a href="https://generatetoken.page/appointment.html" target="_blank">Aadhaar Appointment lucknow Regional Office</a>
             <a href="https://ors.gov.in/orsportal/" target="_blank">Lucknow/Other Govt. Hospital Appointment</a>
-            <a href="https://nitinmamri.github.io/resume/" target="_blank">Make Resume Online</a>
+            <a href="javascript:void(0)" onclick="openProtectedLink('https://nitinmamri.github.io/bio-data/')">
+  Make Simple Resume Online
+<span class="badge">Locked</span></a>
+            <a href="javascript:void(0)" onclick="openProtectedLink('https://nitinmamri.github.io/resume/')">
+  Make Advance Resume Online
+<span class="badge">Locked</span></a>
             <a href="https://docs.google.com/forms/u/0/" target="_blank">Google Form</a>
             <a href="https://www.krutidevunicodeconverter.com/cgi-sys/suspendedpage.cgi" target="_blank">Unicode to Krutidev (Hindi) Font</a>
             <a href="https://ors.gov.in/copp/hs?NICSecurityORS=BY61-CWWG-TREN-XGUJ-0IDQ-ULQI-GR4S-SABS" target="_blank">Lucknow Hospital Booking</a>
@@ -1938,6 +1937,59 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 });
+
+let protectedTargetUrl = "";
+
+function openProtectedLink(url) {
+  protectedTargetUrl = url;
+  document.getElementById("kisanPass").value = "";
+  document.getElementById("passPopup").style.display = "block";
+  document.getElementById("kisanPass").focus();
+
+  document.getElementById("loginBtn").onclick = checkProtectedPassword;
+}
+
+function closePasswordPopup() {
+  document.getElementById("passPopup").style.display = "none";
+  protectedTargetUrl = "";
+}
+
+function checkProtectedPassword() {
+  const pass = document.getElementById("kisanPass").value.trim();
+  if (!pass) return;
+
+  const newTab = window.open("", "_blank");
+
+  fetch("https://script.google.com/macros/s/AKfycbzDuI_xmOYJaOKSQgRYoDPafSfqzOQFMpoOsZHbTV_9J6Sk7Q56BYKg9Hi_v-ThJoNc/exec", {
+    method: "POST",
+    body: pass
+  })
+  .then(res => res.text())
+  .then(data => {
+    if (data === "OK") {
+      document.getElementById("passPopup").style.display = "none";
+      if (newTab) newTab.location.href = protectedTargetUrl;
+    } else {
+      if (newTab) newTab.close();
+      alert("Wrong Password");
+    }
+  })
+  .catch(() => {
+    if (newTab) newTab.close();
+    alert("Server Error");
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const passInput = document.getElementById("kisanPass");
+  if (passInput) {
+    passInput.addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+        checkProtectedPassword();
+      }
+    });
+  }
+});
 // --- Link Converter Helper ---
 function convertDriveLinkToImage(driveLink) {
     const regex = /\/d\/([a-zA-Z0-9_-]+)/;
@@ -1959,6 +2011,8 @@ function copyToClipboard(text) {
 
 function openKisanPassword() {
     document.getElementById("passPopup").style.display = "block";
+
+    document.getElementById("loginBtn").onclick = checkKisanPassword;
 }
 
 function checkKisanPassword() {
