@@ -562,65 +562,31 @@
 </style>
 </head>
 <body>
-    <!-- Password Popup -->
+<!-- Password Popup -->
+<div id="passPopupNew" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:99999;align-items:center;justify-content:center;">
+  <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 0 15px rgba(0,0,0,0.3);text-align:center;min-width:280px;max-width:92vw;">
+    <h3 style="margin:0 0 15px;">🔒 पासवर्ड दर्ज करें</h3>
 
-<div id="passPopup" style="
-display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#fff;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 15px rgba(0,0,0,0.3);
-z-index:99999;
-text-align:center;
-min-width:280px;
-">
+    <input
+      type="password"
+      id="passwordInput"
+      placeholder="Password"
+      autocomplete="current-password"
+      style="padding:10px;width:220px;max-width:100%;border:1px solid #ccc;border-radius:5px;"
+    >
 
-<h3>🔒 पासवर्ड दर्ज करें</h3>
+    <div id="passMsg" style="margin-top:10px;font-size:14px;color:#d32f2f;min-height:20px;"></div>
 
-<input
-type="password"
-id="kisanPass"
-placeholder="Password"
-style="
-padding:10px;
-width:220px;
-border:1px solid #ccc;
-border-radius:5px;
-">
+    <div style="margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <button id="loginBtnNew" style="padding:10px 20px;background:#28a745;color:white;border:none;border-radius:5px;cursor:pointer;">
+        Login
+      </button>
 
-<br><br>
-
-<button id="loginBtn"
-style="
-padding:10px 20px;
-background:#28a745;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-">
-Login
-</button>
-
-<button onclick="
-document.getElementById('passPopup').style.display='none'
-"
-style="
-padding:10px 20px;
-background:red;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-margin-left:5px;
-">
-Close
-</button>
-
+      <button type="button" onclick="closePasswordPopup()" style="padding:10px 20px;background:red;color:white;border:none;border-radius:5px;cursor:pointer;">
+        Close
+      </button>
+    </div>
+  </div>
 </div>
     <!-- HEADER -->
 <div class="top-title">
@@ -740,7 +706,9 @@ Close
             <a href="https://igrsup.gov.in/igrsup/newPropertySearchAction" target="_blank">अपनी प्लॉट का डाटा पाने के लिए</a>
             <a href="https://agridarshan.up.gov.in/" target="_blank">कृषि विभाग </a>
             <a href="#" id="hecterToBighaCalculatorLink">हेक्टेयर से बीघा-डिसमिल Calculator</a>
-            <a href="javascript:void(0)" onclick="openKisanPassword()">किसान कार्ड <span class="badge">Locked</span></a>
+            <a href="#" onclick="openPasswordPopup('kisan'); return false;">
+  किसान कार्ड
+<span class="badge">Locked</span></a>
         </div>
     </div>
     <div class="menu-group">
@@ -779,10 +747,10 @@ Close
             <a href="https://www.indiapost.gov.in/" target="_blank">India Post Track Consignment</a>
             <a href="https://generatetoken.page/appointment.html" target="_blank">Aadhaar Appointment lucknow Regional Office</a>
             <a href="https://ors.gov.in/orsportal/" target="_blank">Lucknow/Other Govt. Hospital Appointment</a>
-            <a href="javascript:void(0)" onclick="openProtectedLink('https://nitinmamri.github.io/bio-data/')">
+            <a href="#" onclick="openPasswordPopup('resume'); return false;">
   Make Simple Resume Online
 <span class="badge">Locked</span></a>
-            <a href="javascript:void(0)" onclick="openProtectedLink('https://nitinmamri.github.io/resume/')">
+            <a href="#" onclick="openPasswordPopup('advresume'); return false;">
   Make Advance Resume Online
 <span class="badge">Locked</span></a>
             <a href="https://docs.google.com/forms/u/0/" target="_blank">Google Form</a>
@@ -864,6 +832,11 @@ Close
   </a>
 </div>
         </div>
+        <!-- Visitor Counter -->
+<div class="footer-visitor">
+    <h2>👥 Visitors</h2>
+    <div id="visitorCount">Loading...</div>
+</div>
         <div class="footer-right">
             <h2>🕒 Opening Hours</h2>
             <p>Mon - Sat: 09:00 AM - 7:00 PM</p>
@@ -1489,6 +1462,17 @@ input.addEventListener('keyup', (event) => {
     goBtn.click();
   }
 });
+// --- Visitor Counter  ---
+fetch("https://script.google.com/macros/s/AKfycbzqLmFrXdtkbmKURczQDi2rqUuFwyXZPXyyseXE50DBF8-RaOb2fn5K0duAeWN6FDhh/exec")
+  .then(response => response.json())
+  .then(data => {
+
+    document.getElementById("visitorCount")
+      .innerHTML =
+      "👥 Total Visitors : " +
+      data.visitors;
+
+  });
 // --- HECTARE TO BIGHA CALCULATOR LOADER ---
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -1938,58 +1922,116 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 });
 
-let protectedTargetUrl = "";
+// --- new password lock code  ---
+let currentType = "";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzPMHtWVXADsO2Fn7j5HKH9_Vfgs-CztzPFe1KrNb3qMtnc61zmGgTYpKIJqPtFaRh5g/exec";
 
-function openProtectedLink(url) {
-  protectedTargetUrl = url;
-  document.getElementById("kisanPass").value = "";
-  document.getElementById("passPopup").style.display = "block";
-  document.getElementById("kisanPass").focus();
+function openPasswordPopup(type) {
+  currentType = type || "";
+  const popup = document.getElementById("passPopupNew");
+  const input = document.getElementById("passwordInput");
+  const msg = document.getElementById("passMsg");
 
-  document.getElementById("loginBtn").onclick = checkProtectedPassword;
+  if (msg) msg.textContent = "";
+  if (input) input.value = "";
+  if (popup) popup.style.display = "flex";
+  if (input) setTimeout(() => input.focus(), 50);
 }
 
 function closePasswordPopup() {
-  document.getElementById("passPopup").style.display = "none";
-  protectedTargetUrl = "";
+  const popup = document.getElementById("passPopupNew");
+  const msg = document.getElementById("passMsg");
+  const input = document.getElementById("passwordInput");
+
+  if (popup) popup.style.display = "none";
+  if (msg) msg.textContent = "";
+  if (input) input.value = "";
 }
 
-function checkProtectedPassword() {
-  const pass = document.getElementById("kisanPass").value.trim();
-  if (!pass) return;
+async function checkPassword() {
+  const input = document.getElementById("passwordInput");
+  const msg = document.getElementById("passMsg");
+  const btn = document.getElementById("loginBtnNew");
+  const pass = input ? input.value.trim() : "";
 
-  const newTab = window.open("", "_blank");
+  if (msg) msg.textContent = "";
 
-  fetch("https://script.google.com/macros/s/AKfycbzDuI_xmOYJaOKSQgRYoDPafSfqzOQFMpoOsZHbTV_9J6Sk7Q56BYKg9Hi_v-ThJoNc/exec", {
-    method: "POST",
-    body: pass
-  })
-  .then(res => res.text())
-  .then(data => {
-    if (data === "OK") {
-      document.getElementById("passPopup").style.display = "none";
-      if (newTab) newTab.location.href = protectedTargetUrl;
-    } else {
-      if (newTab) newTab.close();
-      alert("Wrong Password");
+  if (!currentType) {
+    if (msg) msg.textContent = "Type missing hai. openPasswordPopup('resume') jaisa call karein.";
+    return;
+  }
+
+  if (!pass) {
+    if (msg) msg.textContent = "Please enter password";
+    if (input) input.focus();
+    return;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Checking...";
+  }
+
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      redirect: "follow",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify({
+        type: currentType,
+        password: pass
+      })
+    });
+
+    const text = await res.text();
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      throw new Error("Invalid response: " + text.slice(0, 150));
     }
-  })
-  .catch(() => {
-    if (newTab) newTab.close();
-    alert("Server Error");
-  });
+
+    if (data.status === "ok" && data.url) {
+      closePasswordPopup();
+      window.open(data.url, "_blank");
+      return;
+    }
+
+    if (msg) msg.textContent = data.message || "Wrong Password";
+  } catch (error) {
+    console.error("Password check error:", error);
+    if (msg) msg.textContent = "Server Error: " + error.message;
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "Login";
+    }
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const passInput = document.getElementById("kisanPass");
-  if (passInput) {
-    passInput.addEventListener("keyup", function(event) {
-      if (event.key === "Enter") {
-        checkProtectedPassword();
-      }
+  const btn = document.getElementById("loginBtnNew");
+  const input = document.getElementById("passwordInput");
+  const popup = document.getElementById("passPopupNew");
+
+  if (btn) btn.addEventListener("click", checkPassword);
+
+  if (input) {
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") checkPassword();
+    });
+  }
+
+  if (popup) {
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) closePasswordPopup();
     });
   }
 });
+
 // --- Link Converter Helper ---
 function convertDriveLinkToImage(driveLink) {
     const regex = /\/d\/([a-zA-Z0-9_-]+)/;
