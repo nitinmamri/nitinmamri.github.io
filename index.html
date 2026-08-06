@@ -1,374 +1,2470 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nitin Mamri · Maintenance</title>
-  <!-- Font & Icons (clean, modern) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>💻 NITIN PHOTO STUDIO AND JAN SEVA KENDRA</title>
+    <script>
+      document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'F12') {
+          event.preventDefault();
+        }
+        if (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) {
+          event.preventDefault();
+        }
+        if (event.ctrlKey && event.key === 'U') {
+          event.preventDefault();
+        }
+      });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" ></script>
+    <script>// mobile menu click
+    jQuery(document).ready(function(){
+        jQuery(".top-right").click(function(){
+            jQuery(".menu-icon").toggleClass("open");              
+            jQuery(".main-menu-bar").toggleClass("menuopen");
+        });
+    });</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    .fake-body {
+    font-family: 'Segoe UI', sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    padding: 40px 0;
+}
+
+.fake-body .card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 450px;
+}
+
+.fake-body input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.fake-body button {
+    width: 95%;
+    padding: 12px;
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+.fake-body button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 17px rgba(0,0,0,0.5);
+    }
+
+.fake-body #result {
+    margin-top: 20px;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 10px;
+}
+  }
+
+  /* UPDATED HEADER SECTION */
+  .top-title {
+    position: relative;
+    height: 175px;
+    overflow: hidden;
+    /* नया एनिमेटेड ग्रेडिएंट बैकग्राउंड */
+    background: linear-gradient(270deg, #ff4e50, #f9d423, #24c6dc, #514a9d, #ff4e50);
+    background-size: 1000% 1000%;
+    animation: vibrantGradient 25s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @keyframes vibrantGradient {
+    0% {background-position:0% 50%;}
+    25% {background-position:50% 100%;}
+    50% {background-position:100% 50%;}
+    75% {background-position:50% 0%;}
+    100% {background-position:0% 50%;}
+  }
+
+  /* Title Container */
+  .title-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+  }
+
+  .title-text {
+    font-size: 54px;
+    font-weight: 900;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    text-transform: uppercase;
+    -webkit-text-stroke: #020202;
+    letter-spacing: 3px;
+    line-height: 1.3;
+    background: linear-gradient(90deg, #FF0057, #FFDD00, #00FFD5, #FF0057);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientFlow 6s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255,255,255,0.3);
+  }
+
+  @keyframes gradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+/* 💖 SOFT CUTE TITLE BOX */
+.title-container{
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 50px; /* pill shape */
+
+  background: black;
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow: 
+    0 4px 15px rgba(0,0,0,0.2),
+    inset 0 1px 3px rgba(255,255,255,0.3);
+
+  z-index: 10;
+  position: relative;
+
+  transition: 0.3s ease;
+}
+
+/* hover = soft lift */
+.title-container:hover{
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(0,0,0,0.3),
+    inset 0 1px 5px rgba(255,255,255,0.4);
+}
+  /* Logos Container */
+  .logos {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    z-index: 5;
+  }
+
+  .logo-box {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.2);
+    transition: all 0.5s ease;
+  }
+
+  .logo-box:hover {
+    transform: scale(1.1) rotate(360deg);
+    box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  }
+
+  .logo-box img {
+    height: 125px;
+    width: auto;
+    display: block;
+    border-radius: 10px;
+  }
+
+  /* ===== SEARCH BOX - Bottom Right Corner ===== */
+  .search-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99998;
+    width: 50px;
+    transition: 0.4s ease;
+  }
+
+  .search-wrapper:hover,
+  .search-wrapper:focus-within {
+    width: 320px;
+  }
+
+  .search-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .search-icon-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+
+  .search-icon-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.4);
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 13px 20px 13px 55px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    outline: none;
+    background: rgba(10, 10, 30, 0.92);
+    backdrop-filter: blur(20px);
+    color: #fff;
+    transition: 0.4s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    opacity: 0;
+    width: 50px;
+    pointer-events: none;
+  }
+
+  .search-wrapper:hover #searchInput,
+  .search-wrapper:focus-within #searchInput {
+    opacity: 1;
+    width: 100%;
+    pointer-events: auto;
+    border-color: rgba(255,107,107,0.3);
+  }
+
+  #searchInput::placeholder {
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+  }
+
+  #searchInput:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 30px rgba(255,107,107,0.1);
+  }
+
+  #searchResults {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 100%;
+    min-width: 280px;
+    background: rgba(10, 10, 30, 0.96);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    max-height: 350px;
+    overflow-y: auto;
+    display: none;
+    box-shadow: 0 12px 50px rgba(0,0,0,0.5);
+    padding: 6px;
+  }
+
+  #searchResults::-webkit-scrollbar {
+    width: 4px;
+  }
+  #searchResults::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff6b6b, #ffa502);
+    border-radius: 10px;
+  }
+
+  .search-result-item {
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: #ddd;
+    font-size: 13px;
+  }
+
+  .search-result-item:hover {
+    background: rgba(255,107,107,0.08);
+  }
+
+  .search-result-item .result-icon {
+    font-size: 16px;
+  }
+
+  .search-result-item .result-title {
+    flex: 1;
+  }
+
+  .search-result-item .result-title strong {
+    color: #ffd93d;
+  }
+
+  .search-result-item .result-badge {
+    font-size: 9px;
+    padding: 1px 8px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.4);
+  }
+
+  .search-result-item .result-badge.menu {
+    color: #ffa502;
+    background: rgba(255,165,0,0.1);
+  }
+
+  .search-result-item .result-badge.link {
+    color: #00d2ff;
+    background: rgba(0,210,255,0.08);
+  }
+
+  .search-empty {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+  }
+
+  .search-empty span {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .search-wrapper {
+        bottom: 12px;
+        right: 12px;
+        width: 45px;
+    }
+    .search-wrapper:hover,
+    .search-wrapper:focus-within {
+        width: 280px;
+    }
+    .search-icon-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    #searchInput {
+        padding: 11px 16px 11px 50px;
+        font-size: 13px;
+        width: 45px;
+    }
+    .search-wrapper:hover #searchInput,
+    .search-wrapper:focus-within #searchInput {
+        width: 100%;
+    }
+    #searchResults {
+        min-width: 240px;
+        right: 0;
+        bottom: 55px;
+        max-height: 280px;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width:768px){
+    .top-title {
+      height: auto;
+      padding: 40px 15px;
+      flex-direction: column;
+    }
+
+    .logos {
+      position: static;
+      transform: none;
+      flex-direction: row;
+      gap: 20px;
       padding: 0;
-      box-sizing: border-box;
+      margin-top: 20px;
     }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0b1120;  /* deep dark blue‑gray */
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      margin: 0;
-      /* subtle radial glow */
-      background: radial-gradient(circle at 20% 30%, #13203a, #0a0f1a 80%);
+    .title-text {
+      font-size: 9vw;
     }
 
-    .maintenance-card {
-      max-width: 760px;
-      width: 100%;
-      background: rgba(18, 28, 46, 0.75);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 3.5rem;
-      padding: 3rem 2.5rem;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
-      transition: all 0.2s ease;
-      text-align: center;
-      color: #eef2f8;
+    .logo-box img {
+      height: 70px;
     }
-
-    /* ----- LOGO area (big & shiny) ----- */
-    .logo-wrapper {
-      margin-bottom: 2.2rem;
-      display: flex;
-      justify-content: center;
+    .submenu-csc-wrapper:hover > .submenu-csc{
+        left:10px;
+        top: 100%;   
+        background: green; 
     }
+  }
+  
+/* Glowing border effect */
+.top-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+    animation: borderGlow 3s linear infinite;
+}
 
-    .maintenance-logo {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      background: rgba(255, 255, 255, 0.02);
-      padding: 0.85rem 2.5rem 0.85rem 2rem;
-      border-radius: 120px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
+@keyframes borderGlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* MENU */
+.main-menu-bar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+    background: linear-gradient(90deg, #000000, #458000, #004400, #458000, #000000);
+    background-size: 200% 200%;
+    animation: gradientSlide 6s ease-in-out infinite;
+}
+
+@keyframes gradientSlide {
+    0% {
+        background-position: 0% 50%;
     }
-
-    .logo-icon {
-      font-size: 3.2rem;
-      line-height: 1;
-      color: #7aa9ff;
-      filter: drop-shadow(0 0 12px rgba(90, 160, 255, 0.3));
-      transition: transform 0.2s;
+    50% {
+        background-position: 100% 50%;
     }
-
-    .logo-icon i {
-      background: linear-gradient(145deg, #b6d4ff, #4f8eff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 20px rgba(60, 130, 255, 0.4);
+    100% {
+        background-position: 0% 50%;
     }
+}
+.menu-group {
+    position: relative;
+    margin-right: 8px;
+}
+.menu-item {
+    padding: 8px 14px;
+    color: white;
+    background: linear-gradient(90deg,#ff0057,#ff9800);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.menu-item.clicked {
+    animation: menuExplosion 0.6s ease-out forwards;
+}
+@keyframes menuExplosion {
+    0% { transform: scale(1); box-shadow: none; background: linear-gradient(90deg, #ff0057,#ff9800);}
+    25% { transform: scale(1.2); box-shadow: 0 0 25px rgba(255, 255, 255, 0.9),0 0 50px rgba(255, 0, 150, 0.8),0 0 75px rgba(0, 255, 200, 0.7);
+           background: linear-gradient(135deg, #ff00f7, #00f0ff, #00ff85, #ffcc00); background-size: 300% 300%;}
+    50% { transform: scale(0.95); }
+    75% { transform: scale(1.05); }
+    100% { transform: scale(1); box-shadow: none; background: linear-gradient(90deg, #ff0057,#ff9800);}
+}
+/* SUBMENU */
+.submenu {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    border-radius: 6px;
+    min-width: 360px;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    z-index: 999;overflow:initial;width:100%;
+}
+.submenu a {
+    padding: 8px 12px;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+.submenu a:hover {
+    background: linear-gradient(90deg,#ffed00,#00e0ff);
+    color: black;
+}
+.submenu-csc-wrapper {
+    position: relative;
+}
+.submenu-csc-wrapper:after {
+    content: '';
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    /* transform: rotate(90deg); */
+    background: url("https://lh3.googleusercontent.com/d/1BStVFLU2EJd73zIuJibXWaijerauCi-z=w300") no-repeat center;
+    background-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.submenu-csc-wrapper:hover:after {
+    transform: rotate(180deg);
+   
+}
+.submenu-csc {
+    display: none;
+    /* position: fixed; fixed taaki bilkul bahar aur prominent ho */
+    position: absolute;
+    /* top: auto; */
+    top: 0;
+    left: 100%;
+    min-width: auto;
+    min-height: auto;
+    background: rgba(10,10,10,0.98);
+    border-radius: 10px;
+    box-shadow: 0 6px 32px rgba(20,22,40,0.17), 0 1.5px 10px rgba(50,0,0,0.09);
+    z-index: 999999;
+    padding: 8px 0;
+    transition: opacity 0.15s;
+}
 
-    .logo-text {
-      font-weight: 700;
-      font-size: 2.1rem;
-      letter-spacing: -0.02em;
-      background: linear-gradient(to right, #f0f5ff, #b6d0ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      border-left: 2px solid rgba(255, 255, 255, 0.15);
-      padding-left: 1.2rem;
-      font-family: 'Inter', sans-serif;
-    }
+.submenu-csc-wrapper:hover > .submenu-csc {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+}
 
-    .logo-sub {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #94a9d9;
-      letter-spacing: 0.3px;
-      background: rgba(255, 255, 255, 0.02);
-      padding: 0.25rem 0.9rem;
-      border-radius: 60px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      margin-left: 0.2rem;
-      backdrop-filter: blur(4px);
-    }
+/* Position submenu right with visible gap/jump */
+.submenu-csc-wrapper:hover > .submenu-csc {
+    /* left: calc(100vw - 1000px); right edge se approx 380px spacing par floating (adjust kare) */
+    /* top: auto; yeh parent .main-menu-bar ki height ke hisab se set karein */
+}
 
-    /* ----- MAINTENANCE BADGE / TITLE ----- */
-    .main-badge {
-      display: inline-block;
-      background: rgba(255, 200, 50, 0.08);
-      border: 1px solid rgba(255, 200, 50, 0.15);
-      border-radius: 60px;
-      padding: 0.5rem 1.6rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      color: #f5d87a;
-      margin-bottom: 1.8rem;
-      backdrop-filter: blur(4px);
-      text-transform: uppercase;
-    }
+.submenu-csc a {
+    color: #fff;
+    padding: 12px 18px;
+    text-decoration: none;
+    font-size: 16px;
+    white-space: nowrap;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+.submenu-csc a:hover {
+    background: linear-gradient(90deg,#e5ff00,#12e5ff);
+    color: #020202;
+}
+.badge {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-left: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(255, 75, 43, 0.8);
+    animation: pulse 2s infinite;
+  }
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 8px #ff416c;
+    background: #ff416c;
+  }
+  25% {
+    box-shadow: 0 0 12px #ff4b2b;
+    background: #ff4b2b;
+  }
+  50% {
+    box-shadow: 0 0 15px #ffcc00;
+    background: #ffcc00;
+  }
+  75% {
+    box-shadow: 0 0 12px #00e676;
+    background: #00e676;
+  }
+  100% {
+    box-shadow: 0 0 8px #ff416c;
+    background: #ff416c;
+  }
+}
 
-    .main-badge i {
-      margin-right: 0.6rem;
-      color: #f5c542;
-    }
+/* PAGE CONTENT */
+.page-wrapper { padding: 20px; }
+.main-content {
+    background: linear-gradient(90deg, #ffecd2, #fcb69f);
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    min-height: 500px;
+}
+.main-content p{
+    margin: 10px 0;
+}
+.watermark {
+    position: absolute;
+    inset: 0;
+    background: url('https://lh3.googleusercontent.com/d/1rBgp9P9DzhCqV1SDDsCO38S02FXX9jQK=w300') center/contain no-repeat;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
 
-    h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(135deg, #ffffff, #b8ceff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      line-height: 1.1;
-    }
+/* FOOTER */
+.site-footer {
+    background: linear-gradient(90deg,#001f4d,#003389,#0059b3);
+    color: white;
+    padding: 30px 15px;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+.footer-content div {
+    flex: 1 1 250px;
+}
+.footer-content h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-bottom: 2px solid #ffcc00;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+.footer-content p, .footer-content a {
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+}
+.footer-content a:hover {
+    color: #ffcc00;
+}
+.social-icons a {
+    font-size: 22px;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: 10px;
+    font-size: 14px;
+}
+/* Dust Particles */
+.dust-particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, #ffeb3b, #ff4081);
+    z-index: 9999;
+}
 
-    .sub-message {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: #b6c8ec;
-      max-width: 460px;
-      margin: 0 auto 2rem;
-      line-height: 1.6;
-      opacity: 0.9;
-    }
+/* WhatsApp Modal Styles */
+#whatsappModal {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 25px;
+  box-shadow: 0 0 8px #333;
+  border-radius: 8px;
+  z-index: 10000;
+  width: 300px;
+  text-align: center;
+}
+#modalBg {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 9999;
+}
+#mobileNumber {
+  width: 90%;
+  padding: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+#whatsappModal button {
+  padding: 8px 16px;
+  font-size: 16px;
+  margin: 10px 5px 0 5px;
+  cursor: pointer;
+}
+    @media (max-width:768px){
 
-    .sub-message i {
-      color: #7aa9ff;
-      margin: 0 0.2rem;
-    }
-
-    /* ----- PROGRESS / ANIMATION BAR (fun maintenance vibe) ----- */
-    .progress-wrap {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 100px;
-      height: 8px;
-      width: 100%;
-      max-width: 360px;
-      margin: 1.8rem auto 2.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      overflow: hidden;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .progress-bar {
-      width: 68%;
-      height: 100%;
-      background: linear-gradient(90deg, #5286ff, #a7c4ff, #5286ff);
-      background-size: 200% 100%;
-      border-radius: 100px;
-      animation: shimmer 2.8s ease-in-out infinite;
-      box-shadow: 0 0 16px rgba(70, 140, 255, 0.3);
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 0% 0; }
-      50% { background-position: 100% 0; }
-      100% { background-position: 0% 0; }
-    }
-
-    /* ----- mini info + social / eta ----- */
-    .eta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem 2rem;
-      margin-top: 2rem;
-      font-size: 0.95rem;
-      color: #9bb0dc;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-      padding-top: 2rem;
-    }
-
-    .eta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .eta-item i {
-      font-size: 1.2rem;
-      color: #5f8cff;
-      width: 1.6rem;
-      text-align: center;
-    }
-
-    .eta-item span {
-      font-weight: 500;
-      color: #d3e0ff;
-    }
-
-    .github-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.45rem 1.5rem;
-      border-radius: 60px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      color: #b6cbff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.2s;
-      backdrop-filter: blur(4px);
-    }
-
-    .github-link i {
-      font-size: 1.2rem;
-      color: #aac2ff;
-    }
-
-    .github-link:hover {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(255, 255, 255, 0.15);
-      color: white;
-      transform: scale(1.02);
-    }
-
-    /* footer tiny */
-    .footer-note {
-      margin-top: 2.5rem;
-      font-size: 0.8rem;
-      color: #4f6797;
-      letter-spacing: 0.3px;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
-      padding-top: 1.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-note i {
-      color: #4f7ac9;
-      margin-right: 0.2rem;
-    }
-
-    .footer-note a {
-      color: #6889cf;
-      text-decoration: none;
-      border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-note a:hover {
-      color: #b0ccff;
-      border-bottom-color: #5f8cff;
-    }
-
-    /* responsive */
-    @media (max-width: 520px) {
-      .maintenance-card {
-        padding: 2rem 1.5rem;
-        border-radius: 2.5rem;
-      }
-      .logo-text {
-        font-size: 1.5rem;
-        padding-left: 0.8rem;
-      }
-      .logo-icon {
-        font-size: 2.6rem;
-      }
-      .logo-wrapper {
-        margin-bottom: 1.5rem;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .sub-message {
-        font-size: 1rem;
-      }
-      .maintenance-logo {
-        padding: 0.6rem 1.2rem 0.6rem 1rem;
-        flex-wrap: wrap;
+    .top-right{
+        display: flex;
+        align-items: center;
         justify-content: center;
-      }
-      .logo-sub {
-        margin-left: 0;
-        margin-top: 0.2rem;
-        font-size: 0.75rem;
-      }
     }
-  </style>
+    .menu-icon{
+        background: url(https://lh3.googleusercontent.com/d/1DYEZ0VdjaXeJsu9geE7bOUW81Gq2ILCE=w300);
+        width: 52px;
+        height: 35px;
+        display: block;
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
+        background-size: 85px;
+    }
+    .menu-icon.open{
+        background-position: -38px 0;
+    }
+    .main-menu-bar {
+        display: none;
+    }
+    .main-menu-bar.menuopen {
+        display: flex;
+        gap:8px;
+    }
+    .menu-group {
+        width: 100%;
+        margin: 0;
+    }
+    .submenu{
+        min-width:100%;
+    }
+}
+</style>
 </head>
 <body>
+<!-- Password Popup -->
+<div id="passPopupNew" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:99999;align-items:center;justify-content:center;">
+  <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 0 15px rgba(0,0,0,0.3);text-align:center;min-width:280px;max-width:92vw;">
+    <h3 style="margin:0 0 15px;">🔒 पासवर्ड दर्ज करें</h3>
 
-<div class="maintenance-card">
+    <input
+      type="password"
+      id="passwordInput"
+      placeholder="Password"
+      autocomplete="current-password"
+      style="padding:10px;width:220px;max-width:100%;border:1px solid #ccc;border-radius:5px;"
+    >
 
-  <!-- ========== MAINTENANCE LOGO (big & clear) ========== -->
-  <div class="logo-wrapper">
-    <div class="maintenance-logo">
-      <span class="logo-icon">
-        <i class="fas fa-tools"></i>
-      </span>
-      <span class="logo-text">nitinmamri</span>
-      <span class="logo-sub"><i class="fas fa-cog fa-fw fa-spin" style="margin-right: 4px;"></i> .io</span>
+    <div id="passMsg" style="margin-top:10px;font-size:14px;color:#d32f2f;min-height:20px;"></div>
+
+    <div style="margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <button id="loginBtnNew" style="padding:10px 20px;background:#28a745;color:white;border:none;border-radius:5px;cursor:pointer;">
+        Login
+      </button>
+
+      <button type="button" onclick="closePasswordPopup()" style="padding:10px 20px;background:red;color:white;border:none;border-radius:5px;cursor:pointer;">
+        Close
+      </button>
     </div>
-  </div>
-
-  <!-- maintenance badge -->
-  <div class="main-badge">
-    <i class="fas fa-clock"></i> scheduled maintenance
-  </div>
-
-  <!-- primary message -->
-  <h1>We’ll be back soon</h1>
-  <div class="sub-message">
-    <i class="fas fa-code"></i> 
-    <span style="font-weight: 500;">nitinmamri.github.io</span> 
-    is currently under a <strong>maintenance</strong> glow-up. 
-    <i class="fas fa-rocket" style="margin-left: 0.3rem;"></i>
-  </div>
-
-  <!-- maintenance progress bar (animated) -->
-  <div class="progress-wrap">
-    <div class="progress-bar"></div>
-  </div>
-
-  <!-- extra info: ETA + link -->
-  <div class="eta-row">
-    <div class="eta-item">
-      <i class="fas fa-hourglass-half"></i>
-      <span>~ 2 hours</span>
-    </div>
-    <div class="eta-item">
-      <i class="fas fa-calendar-alt"></i>
-      <span>today, 6 Aug 2026</span>
-    </div>
-    <a href="#" class="github-link" onclick="event.preventDefault();">
-      <i class="fab fa-github"></i> nitinmamri
-    </a>
-  </div>
-
-  <!-- footer / extra -->
-  <div class="footer-note">
-    <span><i class="fas fa-sync-alt fa-fw fa-spin"></i> maintenance mode</span>
-    <span><i class="fas fa-shield-alt"></i> secure</span>
-    <span><i class="fas fa-envelope"></i> <a href="#">contact</a></span>
-  </div>
-
-  <!-- small extra: "nitinmamri.github.io" visible as a subtle brand -->
-  <div style="margin-top: 1.2rem; font-size: 0.7rem; letter-spacing: 0.8px; color: #384e7a; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 1rem;">
-    <i class="fas fa-circle" style="color: #5f8cff; font-size: 0.4rem; vertical-align: middle; margin-right: 6px;"></i>
-    nitinmamri.github.io · under maintenance
   </div>
 </div>
+    <!-- HEADER -->
+<div class="top-title">
+  <div class="logos">
+    <div class="logo-box">
+      <img src="https://lh3.googleusercontent.com/d/1tIE79XQXmSJ-46U44ztAA2sWNqdbGHWT=w300" alt="Logo 1">
+    </div>
+    <div class="logo-box">
+      <img src="https://lh3.googleusercontent.com/d/1ahJsmXycx-VPvbtLLp7hmMMvIazuZIws=w300" alt="Logo 2">
+    </div>
+  </div>
+  
+  <div class="title-container">
+    <div class="title-text">
+      NITIN PHOTO STUDIO<br>JAN SEVA KENDRA
+    </div>
+  </div>
+</div>
+<div class="top-right">
+    <span class="menu-icon"></span>
+</div>
+<!-- MENU BAR -->
+<div class="main-menu-bar">
+    <div class="menu-group">
+        <div class="menu-item">📸 Studio</div>
+        <div class="submenu">
+            <a href="https://nitinmamri.github.io/photo/" target="_blank">Photo With Name And Date<span class="badge">Best</span></a>
+            <a href="https://nitinmamri.github.io/photoedit/" target="_blank">Passport Photo Maker<span class="badge">Best</span></a>
+            <a href="https://nitinmamri.github.io/MobilePhotoToCard/" target="_blank">mobile photo to ID /Document Print<span class="badge">Best</span></a>
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank">Background Remove </a>
+                <div class="submenu-csc">
+                    <a href="https://www.remove.bg/" target="_blank">Remove Background(remove.bg) <span class="badge">Fast</span></a>
+                    <a href="https://www.adobe.com/express/feature/image/remove-background" target="_blank">Remove Background(adobe.remove)<span class="badge">Best</span></a>
+                    <a href="https://remove.photos/" target="_blank">Remove Background(remove.photos)</a>
+                    <a href="https://nitinmamri.github.io/photo/" target="_blank">Photo With Name And Date<span class="badge">Best</span></a>
+                </div>
+            </div>
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank">Image Enhancer Free</a>
+                <div class="submenu-csc">
+                    <a href="https://imgupscaler.com/" target="_blank">Image Enhancer Free<span class="badge">Best</span></a>
+                    <a href="https://www.photogrid.app/en/image-enhancer/" target="_blank">Image Enhancer Free</a>
+                </div>
+            </div>
+         </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">💻 Jan Seva Kendra</div>
+        <div class="submenu">
+            <a href="https://edistrict.up.gov.in/edistrictup/" target="_blank">e-District</a>
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank" class="csc-main-link">CSC Portal</a>
+                <div class="submenu-csc">
+                    <a href="https://digitalseva.csc.gov.in/" target="_blank" class="csc-main-link">CSC login</a>
+                    <a href="https://register.csc.gov.in/myaccount/login" target="_blank">CSC Setting Portel</a>
+                    <a href="https://cscregister.csccloud.in/" target="_blank">New CSC Register</a>
+                </div>
+            </div>
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank">UTIITSL PAN Service</a>
+                <div class="submenu-csc">
+                    <a href="https://www.myutiitsl.com/panonlineservices/CSCLogin" target="_blank">Apply Pan Card</a>
+                    <a href="https://nitinmamri.github.io/utipan/" target="_blank">UTIITSL Pan Photo & Sig. Crop Tool <span class="badge">Best👌</span></a>
+                    <a href="https://uti.mypancenter.com/uti-psa-cropping-tools" target="_blank">UTIITSL Photo & Signature Crop Tool<span class="badge">best</span></a>
+                    <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/instant-e-pan" target="_blank">Apply For Instant-E-Pan</a>
+                    <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/link-aadhaar-status" target="_blank">Pan to Aadhaar Link Status</a>
+                    <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/bl-link-aadhaar" target="_blank">Pan to Link Aadhaar </a>
+                </div>
+            </div> 
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank">NSDL PAN Service</a>
+                <div class="submenu-csc">
+                    <a href="https://tin.tin.proteantech.in/pantan/StatusTrack.html" target="_blank">NSDL PAN STATUS</a>
+                    <a href="https://nitinmamri.github.io/nsdlpan/" target="_blank">NSDL PAN CROP TOOL</a>
+                </div>
+            </div> 
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank">Ration card Service</a>
+                <div class="submenu-csc">
+                    <a href="https://nitinmamri.github.io/rationimage/" target="_blank">Ration Card Image Crop</a>
+                    <a href="https://nitinmamri.github.io/rationcard/" target="_blank">राशन कार्ड के pdf से A4 पर प्रिंट<span class="badge">New</span></a>
+                </div>
+            </div>
+            <a href="javascript:void(0)" id="openWhatsAppModal">Send WhatsApp without Number Save </a>
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank">Penson</a>
+                <div class="submenu-csc">
+                    <a href="https://sspy-up.gov.in/" target="_blank">Main Portel</a>
+                    <a href="https://sspy-up.gov.in/HindiPages/widow_h.aspx" target="_blank">विधवा पेंसन</a>
+                    <a href="https://sspy-up.gov.in/HindiPages/handicap_h.aspx" target="_blank">विकलांग पेंसन</a>
+                    <a href="https://sspy-up.gov.in/HindiPages/oldage_h.aspx" target="_blank">60 साला पेंसन </a>
+                </div>
+            </div>
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank">Aadhaar Service</a>
+                <div class="submenu-csc">
+                    <a href="https://myaadhaar.uidai.gov.in/" target="_blank">Aadhaar login</a>
+                    <a href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar/en" target="_blank">Aadhaar Download</a>
+                    <a href="https://myaadhaar.uidai.gov.in/check-aadhaar-validity/en" target="_blank">Check Aadhaar Link Mobile</a>
+                    <a href="https://myaadhaar.uidai.gov.in/genricPVC/en" target="_blank">Order PVC Card </a>
+                </div>
+            </div>
+            <div class="submenu-csc-wrapper">
+                <a text="" target="_blank">विकलांग सर्टिफिकेट ऑनलाइन</a>
+                <div class="submenu-csc">
+                    <a href="https://swavlambancard.gov.in/login" target="_blank">login</a>
+                    <a href="https://swavlambancard.gov.in/track-your-application" target="_blank">track-your-application</a>
+                    <a href="https://swavlambancard.gov.in/Applyforudid" target="_blank">Apply</a>
+                </div>
+            </div>
+            <a href="https://nfbs.upsdc.gov.in/" target="_blank">राष्ट्रीय पारिवारिक लाभ योजना</a>
+            <a href="https://nregastrep.nic.in/netnrega/Homedist.aspx?flag_debited=&is_statefund=&lflag=eng&district_code=3128&district_name=KHERI&state_name=UTTAR%20PRADESH&state_Code=31" target="_blank">NAREGA Job Card Print</a>
+            <a href="https://register.eshram.gov.in/#/web-dashboard" target="_blank">e-Shram</a>
+            <a href="https://cmsvy.upsdc.gov.in/" target="_blank">मुख्यमंत्री सामूहिक विवाह योजना</a>
+            <a href="https://shadianudan.upsdc.gov.in/" target="_blank">शादी अनुदान योजना</a>
+            <a href="#" id="ageCalculatorLink">📅 Age Calculator</a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">🥦 Kisan </div>
+        <div class="submenu">
+            <a href="https://upbhulekh.gov.in/public/public_ror/Public_ROR.jsp" target="_blank">Bhulekh (Kahtuni)</a>
+            <a href="https://upbhunaksha.gov.in/" target="_blank">भू -नक्सा </a>
+            <a href="https://pmkisan.gov.in/homenew.aspx?aspxerrorpath=/BeneficiaryStatus_New.aspx" target="_blank">Kisan Samman</a>
+            <a href="https://upfr.agristack.gov.in/farmer-registry-up/#/" target="_blank">Farmer-Registry</a>
+            <a href="https://enquiry.caneup.in/GrwEnquiry.aspx" target="_blank">Up Cane Enquiry</a>
+            <a href="https://igrsup.gov.in/igrsup/newPropertySearchAction" target="_blank">अपनी प्लॉट का डाटा पाने के लिए</a>
+            <a href="https://agridarshan.up.gov.in/" target="_blank">कृषि विभाग </a>
+            <a href="#" id="hecterToBighaCalculatorLink">हेक्टेयर से बीघा-डिसमिल Calculator<span class="badge">best</span></a>
+            <a href="#" onclick="openPasswordPopup('kisan'); return false;">
+  किसान कार्ड
+<span class="badge">Locked</span></a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">🖋 PDF AND IMAGE TOOL </div>
+        <div class="submenu">
+            <a href="https://nitinmamri.github.io/photoresizer/" target="_blank">MANAGE IMAGE px/cm/in AND KB SIZE with dpi <span class="badge">best👌</span></a>
+            <a href="https://www.11zon.com/" target="_blank">Compress And merge Pdf or Image</a>
+            <a href="https://smallpdf.com/merge-pdf" target="_blank">PDF Merge</a>            
+            <a href="https://www.prepostseo.com/image-to-text" target="_blank">Image to Text</a>            
+            <a href="https://www.sejda.com/pdf-editor" target="_blank">Edit PDF Best </a>
+            <a href="https://lightpdf.com/" target="_blank">Edit PDF</a>
+            <a href="https://nitinmamri.github.io/utipan/" target="_blank">UTI PAN CROP TOOL</a>
+            <a href="https://nitinmamri.github.io/nsdlpan/" target="_blank">NSDL PAN CROP TOOL</a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">👆Election Commission </div>
+        <div class="submenu">
+            <a href="https://voters.eci.gov.in/login" target="_blank">New Votar apply</a>
+            <a href="https://electoralsearch.eci.gov.in/" target="_blank">Votar Search</a>
+            <a href="http://sec.up.nic.in/site/publication.aspx" target="_blank">Election Commission</a>
+            <a href="https://ceouttarpradesh.nic.in/rollpdf/rollpdf.aspx" target="_blank">Voter list 2003<span class="badge">NEW</span></a>
+        </div>
+    </div>
+     <div class="menu-group">
+        <div class="menu-item">✂CROP TOOL </div>
+        <div class="submenu">
+            <a href="https://nitinmamri.github.io/rationimage/" target="_blank">132x170 px Image/ Ration Card Image Crop</a>
+            <a href="https://nitinmamri.github.io/3.5x4.5and3.5x1.5CropTool/" target="_blank">3.5x4.5cm and 3.5x1.5cm Crop Tool</a>
+            <a href="https://nitinmamri.github.io/signature6x2cm/" target="_blank">6cmx2cm Crop signature 6cmx2cm<span class="badge">Best</span> </a>
+            <a href="https://nitinmamri.github.io/signature140x60px/" target="_blank">140x60-pixels Crop signature <span class="badge">Best</span> </a>
+            <a href="https://image.pi7.org/resize-image-pixel" target="_blank">Resize Image (Pixel & KB)<span class="badge">Best</span> </a>
+            <a href="https://image.pi7.org/resize-image-to-6cmx2cm" target="_blank">Crop signature 140x60px</a>
+            <a href="https://image.pi7.org/resize-image-to-140x60-pixels" target="_blank">Crop signature 140x60-pixels</a>
+            <a href="https://nitinmamri.github.io/utipan/" target="_blank">UTIITSL Pan Photo & Sig. Crop Tool <span class="badge">Best👌</span></a>
+            <a href="https://uti.mypancenter.com/uti-psa-cropping-tools" target="_blank">UTIITSL Photo & Signature Crop Tool<span class="badge">Good</span></a>
+        </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">⭐ Important Links</div>
+        <div class="submenu" style="height:400px;overflow:scroll">
+            <a href="https://www.indiapost.gov.in/" target="_blank">India Post Track Consignment</a>
+            <a href="https://generatetoken.page/appointment.html" target="_blank">Aadhaar Appointment lucknow Regional Office</a>
+            <a href="https://ors.gov.in/orsportal/" target="_blank">Lucknow/Other Govt. Hospital Appointment</a>
+            <a href="#" onclick="openPasswordPopup('panfind'); return false;">
+  Aadhar to Pan Find
+<span class="badge">Locked</span></a>
+            <a href="#" onclick="openPasswordPopup('panfind2'); return false;">
+  Aadhar to Pan Find 2
+<span class="badge">Locked</span></a>
+            <a href="#" onclick="openPasswordPopup('resume'); return false;">
+  Make Simple Resume Online
+<span class="badge">Locked</span></a>
+            <a href="#" onclick="openPasswordPopup('advresume'); return false;">
+  Make Advance Resume Online
+<span class="badge">Locked</span></a>
+            <a href="#" onclick="openPasswordPopup('shadiresume'); return false;">
+  Make Shadi Resume
+<span class="badge">Locked</span></a>
+            <a href="https://cmtcts.upsdc.gov.in" target="_blank">रसोइयो या अध्यापकों के लिए कैशलेश (आयुष्मान )</a>
+            <a href="https://docs.google.com/forms/u/0/" target="_blank">Google Form</a>
+            <a href="https://www.krutidevunicodeconverter.com/cgi-sys/suspendedpage.cgi" target="_blank">Unicode to Krutidev (Hindi) Font</a>
+            <a href="https://ors.gov.in/copp/hs?NICSecurityORS=BY61-CWWG-TREN-XGUJ-0IDQ-ULQI-GR4S-SABS" target="_blank">Lucknow Hospital Booking</a>
+            <a href="https://app.creatify.ai/" target="_blank">Text to Audio</a>
+            <a href="https://abvmucet26.co.in/" target="_blank">Atal Bihari Bajpai University</a>
+            <a href="https://www.youtube.com/channel/UCJrf364HUtOiDfITZYZKkHw?sub_confirmation=1" target="_blank">Subscribe My Channel</a>
+            <a href="https://sarathi.parivahan.gov.in/sarathiservice/mobNumUpdpub.do" target="_blank">किसी ड्राइविंग लाइसेन्स पर मोबाइल नंबर बदलने के लिए </a>
+            <a href="https://vahan.parivahan.gov.in/vahanservice/vahan/ui/otherservices/editMobileNumberVahan.xhtml" target="_blank">किसी वाहन पर मोबाइल नंबर बदलने के लिए(1)</a>
+            <a href="https://sarathi.parivahan.gov.in/sarathiservice/mobNumUpdpub.do" target="_blank">किसी वाहन पर मोबाइल नंबर बदलने के लिए HOME PAGE </a>
+            <a href="#" id="driveInfoLink">Google Drive link convert to image link</a>
+            <a href="https://www.deepseek.com/en/" target="_blank">Deep seek</a>
+            </div>
+    </div>
+    <div class="menu-group">
+        <div class="menu-item">📞 Contact</div>
+        <div class="submenu">
+            <a href="" target="_blank"><span class="badge">Mobile</span> 9956691683 </a>
+            <a href="" target="_blank"><span class="badge">E-Mail</span> nitinmamri@gmail.com </a>
+        </div>
+    </div>
+</div>
 
+<!-- ===== SEARCH BOX - BOTTOM RIGHT CORNER ===== -->
+<div class="search-wrapper">
+    <div class="search-container">
+        <div class="search-icon-btn">🔍</div>
+        <input type="text" id="searchInput" placeholder="🔎 यहाँ सर्च करें... (जन सेवा, फोटो, CSC, पैन, आधार...)" autocomplete="off" />
+        <div id="searchResults"></div>
+    </div>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="page-wrapper">
+    <div class="main-content">
+        <div class="watermark"></div>
+        <h2>हमारी सेवाएँ</h2>
+        <p><strong>📸 Nitin Photo Studio:</strong> नितिन फोटो स्टूडियो आपके जीवन के हर खास पल को संजोने के लिए समर्पित है। यहां शादी, बर्थडे, मैटरनिटी शूट, आउटडोर फोटोशूट और इवेंट फोटोग्राफी की बेहतरीन सेवाएँ उपलब्ध हैं। उन्नत कैमरा तकनीक एवं अनुभवी टीम के साथ, हम आपके यादगार लम्हों को खूबसूरत तस्वीरों में कैद करते हैं, ताकि आपकी खुशियों को बरसों तक संजोया जा सके।</p>
+        <p><strong>🛠 Jan Seva Kendra:</strong> जन सेवा केन्द्र पर आपको एक ही छत के नीचे अनेक प्रकार की सरकारी और डिजिटल सेवाएँ प्राप्त होती हैं। आधार कार्ड, पैन कार्ड, ऑनलाइन फॉर्म, वोटर ID, ड्राइविंग लाइसेंस जैसी तमाम सरकारी सुविधाएं यहां आसान और सरल प्रक्रिया में उपलब्ध कराई जाती हैं। हमारा उद्देश्य है कि गाँव और शहर के सभी लोगों को तकनीकी और सरकारी सेवाएँ सुलभता से प्राप्त हो सकें। </p>
+        <p><strong>🗃️ स्पेशल = डिलीटेड डेटा रिकवरी:</strong> आज के डिजिटल युग में कई बार जरूरी फाइलें या फोटो गलती से डिलीट हो जाती हैं, जिससे परेशानी बढ़ जाती है। हमारी स्पेशल डाटा रिकवरी सेवा के माध्यम से, आप अपने डिलीट हुए फोटो, वीडियो, डॉक्युमेंट्स या अन्य महत्वपूर्ण डेटा को फिर से सुरक्षित प्राप्त कर सकते हैं। हमारे पास अपडेटेड सॉफ़्टवेयर और अनुभवी टेक्निकल टीम है, जो हार्ड डिस्क, पेन ड्राइव, मेमोरी कार्ड आदि से डाटा रिकवर करने में आपकी पूरी मदद करती है। आपकी जानकारी गोपनीय और सुरक्षित रखी जाती है, ताकि आपको अपनी खोई हुई फाइलें फिर से आसानी से मिल जाएं।</p>
+    </div>
+</div>
+
+<!-- WhatsApp Number Modal Background -->
+<div id="modalBg"></div>
+<!-- WhatsApp Number Modal -->
+<div id="whatsappModal">
+  <h3>10-अंकों का मोबाइल नंबर दर्ज करें</h3>
+  <input type="text" id="mobileNumber" maxlength="10" placeholder="मोबाइल नंबर" autofocus />
+  <br />
+  <button id="whatsappGoBtn">खोजें</button>
+  <button id="whatsappCancelBtn">रद्द करें</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <h2>📍 Contact Us</h2>
+            <p><strong>Address:</strong> Vill And Post -Mamri ,Dist-Kheri, UP, India</p>
+            <p><strong>Phone:</strong> +91 9956691683</p>
+            <p><strong>Email:</strong> nitinmamri@gmail.com</p>
+        </div>
+        <div class="footer-middle">
+            <h2>🌐 Follow Us</h2>
+            <style>
+.social-icons img {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  margin: 0 0.0em; /* Thoda spacing left/right */
+}
+</style>
+<div class="social-icons">
+  <a href="https://www.facebook.com/nitin.verma.161446" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/1pF4GZ3wyLYhNM8S0S5vdKAp7KxzmsMaa=w300" alt="Facebook">
+  </a>
+  <a href="https://www.instagram.com/nitinkaima/" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/1BFfWiThcj7PJq9efurT3LoW8EMDEj3RK=w300" alt="Instagram">
+  </a>
+  <a href="https://wa.me/919956691683" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/18QfDb5RTWyVdovXTyTtZ_0qO23FAN4_J=w300" alt="WhatsApp">
+  </a>
+  <a href="mailto:nitinmamri@gmail.com" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/1eOOOW4GPpe4lqT9CuZPBqvFp9HWGsbHm=w300" alt="Email">
+  </a>
+  <a href="https://www.youtube.com/channel/UCJrf364HUtOiDfITZYZKkHw?sub_confirmation=1" target="_blank">
+    <img src="https://lh3.googleusercontent.com/d/13mVnVoAGNh76Rafi-j-BBESkARzg1xtt=w300" alt="YouTube">
+  </a>
+</div>
+        </div>
+        <!-- Visitor Counter -->
+<div class="footer-visitor">
+    <h2>👥 Visitors</h2>
+    <div id="visitorCount">Loading...</div>
+</div>
+        <div class="footer-right">
+            <h2>🕒 Opening Hours</h2>
+            <p>Mon - Sat: 09:00 AM - 7:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Nitin Official</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
+    var ageBtn = document.getElementById('ageCalculatorLink');
+
+    if(ageBtn){
+
+        ageBtn.addEventListener('click', function(e){
+
+            e.preventDefault();
+
+            var mainContent =
+                document.querySelector('.main-content');
+
+            mainContent.innerHTML = `
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.age-bg{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    font-family:Arial,sans-serif;
+
+    background:
+    linear-gradient(135deg,
+    #0f172a,
+    #1e293b,
+    #312e81);
+}
+
+
+/* ===== CARD ===== */
+
+.age-box{
+
+    width:100%;
+    max-width:430px;
+
+    padding:35px;
+
+    border-radius:28px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 0 15px rgba(0,245,255,0.25),
+    0 0 30px rgba(139,92,246,0.20),
+    0 10px 40px rgba(0,0,0,0.4);
+
+    animation:
+    fadeIn 0.6s ease,
+    glowCard 4s linear infinite;
+}
+
+
+/* ===== TITLE ===== */
+
+.age-box h2{
+
+    text-align:center;
+
+    margin-bottom:28px;
+
+    font-size:34px;
+
+    font-weight:900;
+
+    background:
+    linear-gradient(90deg,
+    #00f5ff,
+    #8b5cf6,
+    #ff4fd8);
+
+    background-size:300% 300%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:textGlow 4s linear infinite;
+}
+
+
+/* ===== LABEL ===== */
+
+.age-box label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    font-weight:bold;
+}
+
+
+/* ===== INPUT ===== */
+
+.age-box input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:20px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:
+    rgba(255,255,255,0.1);
+
+    color:#fff;
+
+    font-size:15px;
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    transition:0.3s;
+
+    box-shadow:
+    0 0 10px rgba(0,245,255,0.08);
+}
+
+.age-box input:focus{
+
+    border-color:#00f5ff;
+
+    box-shadow:
+    0 0 12px rgba(0,245,255,0.5),
+    0 0 25px rgba(139,92,246,0.35);
+}
+
+
+/* ===== BUTTON ===== */
+
+.age-box button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+    linear-gradient(90deg,
+    #00f5ff,
+    #8b5cf6);
+
+    background-size:300% 300%;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    animation:
+    buttonGlow 4s linear infinite;
+
+    box-shadow:
+    0 0 15px rgba(0,245,255,0.35);
+}
+
+.age-box button:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 20px rgba(0,245,255,0.55),
+    0 0 40px rgba(139,92,246,0.45);
+}
+
+
+/* ===== RESULT ===== */
+
+#result{
+
+    margin-top:28px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+
+/* ===== RESULT CARD ===== */
+
+.result-card{
+
+    width:100px;
+
+    padding:18px 10px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+    0 0 12px rgba(0,245,255,0.18),
+    0 0 25px rgba(139,92,246,0.12),
+    0 5px 20px rgba(0,0,0,0.25);
+
+    animation:
+    pop 0.5s ease,
+    glowCard 4s linear infinite;
+}
+
+
+/* ===== NUMBER ===== */
+
+.result-number{
+
+    font-size:28px;
+
+    font-weight:900;
+
+    color:#00f5ff;
+
+    margin-bottom:6px;
+
+    text-shadow:
+    0 0 8px rgba(0,245,255,0.7),
+    0 0 18px rgba(0,245,255,0.5);
+}
+
+
+/* ===== TEXT ===== */
+
+.result-text{
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:bold;
+}
+
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pop{
+
+    from{
+        transform:scale(0.8);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+@keyframes glowCard{
+
+    0%{
+
+        box-shadow:
+        0 0 15px rgba(0,245,255,0.25),
+        0 0 30px rgba(139,92,246,0.15),
+        0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    50%{
+
+        box-shadow:
+        0 0 25px rgba(255,79,216,0.35),
+        0 0 40px rgba(0,245,255,0.30),
+        0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    100%{
+
+        box-shadow:
+        0 0 15px rgba(0,245,255,0.25),
+        0 0 30px rgba(139,92,246,0.15),
+        0 10px 40px rgba(0,0,0,0.4);
+    }
+}
+
+@keyframes textGlow{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    100%{
+        background-position:100% 50%;
+    }
+}
+
+@keyframes buttonGlow{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    100%{
+        background-position:100% 50%;
+    }
+}
+
+
+/* ===== MOBILE ===== */
+
+@media(max-width:500px){
+
+    .age-box{
+        padding:25px;
+    }
+
+    .age-box h2{
+        font-size:28px;
+    }
+
+    .result-card{
+        width:90px;
+    }
+
+    .result-number{
+        font-size:24px;
+    }
+}
+
+</style>
+
+
+<div class="age-bg">
+
+    <div class="age-box">
+
+        <h2>
+            ✨ Age Calculator
+        </h2>
+
+        <label>
+            Date of Birth
+        </label>
+
+        <input type="date" id="dob">
+
+
+        <label>
+            Current Date
+        </label>
+
+        <input type="date" id="secondDate">
+
+
+        <button onclick="calculateDiff()">
+            Calculate Age
+        </button>
+
+
+        <div id="result"></div>
+
+    </div>
+
+</div>
+
+            `;
+        });
+    }
+});
+
+
+function calculateDiff(){
+
+    let dob =
+        new Date(
+            document.getElementById("dob").value
+        );
+
+    let second =
+        new Date(
+            document.getElementById("secondDate").value
+        );
+
+    if(
+        !document.getElementById("dob").value ||
+        !document.getElementById("secondDate").value
+    ){
+
+        document.getElementById("result").innerHTML =
+        "<div style='color:#fff;font-weight:bold;'>⚠️ Select both dates</div>";
+
+        return;
+    }
+
+    let years =
+        second.getFullYear() -
+        dob.getFullYear();
+
+    let months =
+        second.getMonth() -
+        dob.getMonth();
+
+    let days =
+        second.getDate() -
+        dob.getDate();
+
+    if(days < 0){
+
+        months--;
+
+        days += new Date(
+            second.getFullYear(),
+            second.getMonth(),
+            0
+        ).getDate();
+    }
+
+    if(months < 0){
+
+        years--;
+
+        months += 12;
+    }
+
+    document.getElementById("result").innerHTML = `
+
+    <div class="result-card">
+
+        <div class="result-number">
+            ${years}
+        </div>
+
+        <div class="result-text">
+            Years
+        </div>
+
+    </div>
+
+
+    <div class="result-card">
+
+        <div class="result-number">
+            ${months}
+        </div>
+
+        <div class="result-text">
+            Months
+        </div>
+
+    </div>
+
+
+    <div class="result-card">
+
+        <div class="result-number">
+            ${days}
+        </div>
+
+        <div class="result-text">
+            Days
+        </div>
+
+    </div>
+
+    `;
+}
+// Menu Click Animation
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', e => {
+        e.stopPropagation();
+        item.classList.remove('clicked');
+        void item.offsetWidth;
+        item.classList.add('clicked');
+        const thisSub = item.parentElement.querySelector('.submenu');
+        const isOpen = thisSub.style.display === 'flex';
+        document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+        if (!isOpen) thisSub.style.display = 'flex';
+    });
+});
+document.addEventListener('click', () => {
+    document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+});
+// Dust Effect
+function createDust(x, y) {
+    for (let i = 0; i < 12; i++) {
+        let particle = document.createElement('div');
+        particle.className = 'dust-particle';
+        document.body.appendChild(particle);
+        let size = Math.random() * 8 + 4;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${x - size / 2}px`;
+        particle.style.top = `${y - size / 2}px`;
+        let angle = Math.random() * 2 * Math.PI;
+        let distance = Math.random() * 80 + 20;
+        let tx = Math.cos(angle) * distance;
+        let ty = Math.sin(angle) * distance;
+        particle.animate(
+            [{ transform: 'translate(0,0) scale(1)', opacity: 1 },
+             { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }],
+            { duration: 800, easing: 'ease-out' }
+        );
+        setTimeout(() => particle.remove(), 800);
+    }
+}
+document.addEventListener('click', e => {
+    if (!e.target.closest('.main-menu-bar')) {
+        createDust(e.clientX, e.clientY);
+    }
+});
+document.addEventListener('touchstart', e => {
+    if (e.touches.length > 0 && !e.target.closest('.main-menu-bar')) {
+        createDust(e.touches[0].clientX, e.touches[0].clientY);
+    }
+});
+
+// WhatsApp Modal Controls
+const modal = document.getElementById('whatsappModal');
+const modalBg = document.getElementById('modalBg');
+const input = document.getElementById('mobileNumber');
+const goBtn = document.getElementById('whatsappGoBtn');
+const cancelBtn = document.getElementById('whatsappCancelBtn');
+const openModalLink = document.getElementById('openWhatsAppModal');
+
+function showWhatsAppModal() {
+  modal.style.display = 'block';
+  modalBg.style.display = 'block';
+  input.value = '';
+  input.focus();
+}
+
+function hideWhatsAppModal() {
+  modal.style.display = 'none';
+  modalBg.style.display = 'none';
+}
+
+openModalLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  showWhatsAppModal();
+});
+
+goBtn.addEventListener('click', () => {
+  const num = input.value.trim();
+  if (/^\d{10}$/.test(num)) {
+    window.location.href = 'https://wa.me/91' + num;
+  } else {
+    alert('कृपया 10 अंकों का सही मोबाइल नंबर दर्ज करें।');
+    input.focus();
+  }
+});
+
+cancelBtn.addEventListener('click', () => {
+  hideWhatsAppModal();
+});
+
+modalBg.addEventListener('click', () => {
+  hideWhatsAppModal();
+});
+
+input.addEventListener('keyup', (event) => {
+  if (event.key === "Enter") {
+    goBtn.click();
+  }
+});
+// --- Visitor Counter  ---
+fetch("https://script.google.com/macros/s/AKfycbzqLmFrXdtkbmKURczQDi2rqUuFwyXZPXyyseXE50DBF8-RaOb2fn5K0duAeWN6FDhh/exec")
+  .then(response => response.json())
+  .then(data => {
+
+    document.getElementById("visitorCount")
+      .innerHTML =
+      "👥 Total Visitors : " +
+      data.visitors;
+
+  });
+// --- HECTARE TO BIGHA CALCULATOR LOADER ---
+
+document.addEventListener('DOMContentLoaded', function(){
+
+    var hecterBtn =
+        document.getElementById('hecterToBighaCalculatorLink');
+
+    if(hecterBtn){
+
+        hecterBtn.addEventListener('click', function(e){
+
+            e.preventDefault();
+
+            e.stopPropagation();
+
+            // सभी submenu hide
+            document.querySelectorAll('.submenu')
+            .forEach(s => s.style.display = 'none');
+
+            var mainContent =
+                document.querySelector('.main-content');
+
+            mainContent.innerHTML = `
+
+<style>
+
+.kisan-wrapper{
+
+    min-height:550px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px 15px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+    url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop');
+
+    background-size:cover;
+
+    background-position:center;
+
+    border-radius:25px;
+}
+
+.kisan-card{
+
+    width:100%;
+
+    max-width:520px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(14px);
+
+    border:2px solid rgba(255,255,255,0.2);
+
+    border-radius:28px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.45),
+    inset 0 1px 2px rgba(255,255,255,0.25);
+
+    animation:zoomIn 0.7s ease;
+}
+
+@keyframes zoomIn{
+
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.kisan-icon{
+
+    font-size:75px;
+
+    margin-bottom:10px;
+
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.kisan-title{
+
+    color:#fff;
+
+    font-size:36px;
+
+    font-weight:900;
+
+    text-shadow:0 2px 12px rgba(0,0,0,0.5);
+
+    margin-bottom:12px;
+}
+
+.kisan-location{
+
+    display:inline-block;
+
+    background:linear-gradient(90deg,#ffe600,#ff9800);
+
+    color:#000;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.35);
+}
+
+.kisan-input{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:18px;
+
+    font-size:22px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,0.95);
+
+    margin-bottom:20px;
+
+    box-shadow:
+    inset 0 2px 10px rgba(0,0,0,0.15);
+
+    transition:0.3s;
+}
+
+.kisan-input:focus{
+
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 18px rgba(0,255,100,0.8),
+    inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.kisan-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:21px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    background:
+    linear-gradient(135deg,#11998e,#38ef7d);
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,0.35);
+
+    transition:0.3s;
+}
+
+.kisan-btn:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.02);
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,0.45);
+}
+
+.kisan-result{
+
+    margin-top:18px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.14);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    padding:18px;
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    text-shadow:0 2px 10px rgba(0,0,0,0.6);
+
+    box-shadow:
+    0 0 18px rgba(0,255,120,0.35);
+
+    animation:glow 2s infinite alternate;
+
+    line-height:1.8;
+}
+
+@keyframes glow{
+
+    from{
+        box-shadow:0 0 10px rgba(255,255,255,0.2);
+    }
+
+    to{
+        box-shadow:0 0 25px rgba(0,255,100,0.7);
+    }
+}
+
+.kisan-highlight{
+
+    color:#ffe600;
+
+    font-size:26px;
+
+    font-weight:900;
+}
+
+.kisan-note{
+
+    margin-top:18px;
+
+    color:#fff;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+@media(max-width:768px){
+
+    .kisan-title{
+        font-size:26px;
+    }
+
+    .kisan-result{
+        font-size:18px;
+    }
+
+    .kisan-card{
+        padding:25px 18px;
+    }
+}
+
+</style>
+
+<div class="kisan-wrapper">
+
+    <div class="kisan-card">
+
+        <div class="kisan-icon">🌼</div>
+
+        <div class="kisan-title">
+            हेक्टेयर से बीघा-डिसमिल
+        </div>
+
+        <div class="kisan-location">
+            📍 लखीमपुर खीरी
+        </div>
+
+        <input
+            type="number"
+            id="hectare"
+            class="kisan-input"
+            step="0.0001"
+            placeholder="हेक्टेयर दर्ज करें"
+            oninput="calculateHectare()"
+        >
+
+        <button
+            class="kisan-btn"
+            onclick="calculateHectare()"
+        >
+            🌱 जमीन Calculate करें
+        </button>
+
+        <div
+            class="kisan-result"
+            id="hectareResult"
+        >
+            🌾 परिणाम यहाँ दिखेगा
+        </div>
+
+        <div class="kisan-note">
+
+            1 हेक्टेयर = 10,000 वर्ग मीटर<br>
+
+            1 डिसमिल = 40.468564 वर्ग मीटर<br>
+
+            16 डिसमिल = 1 बीघा
+
+        </div>
+
+    </div>
+
+</div>
+
+            `;
+        });
+    }
+});
+
+function calculateHectare(){
+
+    let hectare =
+        parseFloat(
+            document.getElementById("hectare").value
+        );
+
+    if(isNaN(hectare)){
+
+        document.getElementById(
+            "hectareResult"
+        ).innerHTML = "🌾 परिणाम यहाँ दिखेगा";
+
+        return;
+    }
+
+    // 1 hectare = 10000 square meter
+    let squareMeter = hectare * 10000;
+
+    // 1 dismil = 40.468564 sq meter
+    let totalDismil =
+        squareMeter / 40.468564;
+
+    // 16 dismil = 1 bigha
+    let bigha =
+        Math.floor(totalDismil / 16);
+
+    let remainDismil =
+        totalDismil % 16;
+
+    document.getElementById(
+        "hectareResult"
+    ).innerHTML =
+    "🌾 जमीन : " +
+    "<span class='kisan-highlight'>" +
+    bigha +
+    "</span> बीघा " +
+
+    "<span class='kisan-highlight'>" +
+    remainDismil.toFixed(2) +
+    "</span> डिसमिल <br><br>" +
+
+    "📏 वर्ग मीटर : " +
+    "<span class='kisan-highlight'>" +
+    squareMeter.toFixed(2) +
+    "</span><br><br>" +
+
+    "🌱 कुल डिसमिल : " +
+    "<span class='kisan-highlight'>" +
+    totalDismil.toFixed(4) +
+    "</span><br><br>";
+}
+// --- GOOGLE DRIVE LINK TO IMAGE CONVERTER LOADER ---
+document.addEventListener('DOMContentLoaded', function(){
+    var driveLinkButton = document.getElementById('driveInfoLink');
+    if(driveLinkButton){
+        driveLinkButton.addEventListener('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+            var mainContent = document.querySelector('.main-content');
+            if(mainContent){
+                mainContent.innerHTML = `
+                    <h2>Google Drive Link to Image Converter</h2>
+                    <input type="text" id="driveLink" placeholder="Google Drive file link yahan paste karein" style="padding:8px; width:60%;" />
+                    <button id="convertBtn" style="padding:8px 18px; background:#4CAF50; color:#fff; margin-left: 10px;">Convert & Show Image</button>
+                    <div id="result" style="margin-top:20px;"></div>
+                    <style>
+                        #copyButton {background: #2196F3; border: none; padding: 6px 12px; color: white; border-radius: 4px; cursor: pointer;}
+                        #copyButton:active {background: #1769AA;}
+                        img {margin-top:10px; max-width:300px; border-radius: 6px;}
+                    </style>
+                `;
+                setTimeout(function() {
+                    var btn = document.getElementById('convertBtn');
+                    if(btn){
+                        btn.onclick = function() {
+                            var driveLink = document.getElementById('driveLink').value.trim();
+                            var imageLink = convertDriveLinkToImage(driveLink);
+                            var resultDiv = document.getElementById('result');
+                            if (imageLink) {
+                                resultDiv.innerHTML = '<strong>Converted Image Link:</strong><br>' +
+                                    '<a href="' + imageLink + '" target="_blank" id="imageUrl">' + imageLink + '</a>' +
+                                    '<button id="copyButton" style="margin-left:8px;">Copy Link</button>' +
+                                    '<br><img src="' + imageLink + '" alt="Converted Image">';
+                                var cb = document.getElementById('copyButton');
+                                if(cb) {
+                                    cb.onclick = function() {
+                                        copyToClipboard(imageLink);
+                                    }
+                                }
+                            } else {
+                                resultDiv.innerHTML = "<span style='color:red;'>Invalid Google Drive link format.</span>";
+                            }
+                        }
+                    }
+                }, 50);
+            }
+        });
+    }
+});
+
+// --- new password lock code  ---
+let currentType = "";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzPMHtWVXADsO2Fn7j5HKH9_Vfgs-CztzPFe1KrNb3qMtnc61zmGgTYpKIJqPtFaRh5g/exec";
+
+function openPasswordPopup(type) {
+  currentType = type || "";
+  const popup = document.getElementById("passPopupNew");
+  const input = document.getElementById("passwordInput");
+  const msg = document.getElementById("passMsg");
+
+  if (msg) msg.textContent = "";
+  if (input) input.value = "";
+  if (popup) popup.style.display = "flex";
+  if (input) setTimeout(() => input.focus(), 50);
+}
+
+function closePasswordPopup() {
+  const popup = document.getElementById("passPopupNew");
+  const msg = document.getElementById("passMsg");
+  const input = document.getElementById("passwordInput");
+
+  if (popup) popup.style.display = "none";
+  if (msg) msg.textContent = "";
+  if (input) input.value = "";
+}
+
+async function checkPassword() {
+  const input = document.getElementById("passwordInput");
+  const msg = document.getElementById("passMsg");
+  const btn = document.getElementById("loginBtnNew");
+  const pass = input ? input.value.trim() : "";
+
+  if (msg) msg.textContent = "";
+
+  if (!currentType) {
+    if (msg) msg.textContent = "Type missing hai. openPasswordPopup('resume') jaisa call karein.";
+    return;
+  }
+
+  if (!pass) {
+    if (msg) msg.textContent = "Please enter password";
+    if (input) input.focus();
+    return;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Checking...";
+  }
+
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      redirect: "follow",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify({
+        type: currentType,
+        password: pass
+      })
+    });
+
+    const text = await res.text();
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      throw new Error("Invalid response: " + text.slice(0, 150));
+    }
+
+    if (data.status === "ok" && data.url) {
+      closePasswordPopup();
+      window.open(data.url, "_blank");
+      return;
+    }
+
+    if (msg) msg.textContent = data.message || "Wrong Password";
+  } catch (error) {
+    console.error("Password check error:", error);
+    if (msg) msg.textContent = "Server Error: " + error.message;
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "Login";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("loginBtnNew");
+  const input = document.getElementById("passwordInput");
+  const popup = document.getElementById("passPopupNew");
+
+  if (btn) btn.addEventListener("click", checkPassword);
+
+  if (input) {
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") checkPassword();
+    });
+  }
+
+  if (popup) {
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) closePasswordPopup();
+    });
+  }
+});
+
+// --- Link Converter Helper ---
+function convertDriveLinkToImage(driveLink) {
+    const regex = /\/d\/([a-zA-Z0-9_-]+)/;
+    const match = driveLink.match(regex);
+    if (match && match[1]) {
+        const fileId = match[1];
+        return 'https://lh3.googleusercontent.com/d/' + fileId + '=w300';
+    }
+    return null;
+}
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Link copied!');
+        resetToHomeContent();
+    }).catch(function(err) {
+        alert('Copy failed!');
+    });
+}
+
+function openKisanPassword() {
+    document.getElementById("passPopup").style.display = "block";
+
+    document.getElementById("loginBtn").onclick = checkKisanPassword;
+}
+
+function checkKisanPassword() {
+    const pass = document.getElementById("kisanPass").value;
+    if (!pass) return;
+
+    const newTab = window.open("", "_blank");
+
+    fetch("https://script.google.com/macros/s/AKfycbxqWLa6wTaVMb_9UAgSlcILxR6Z7Pj9e4XIyTpv0zB6HfJJgvVSnhgmkS2P3CdktZgA/exec", {
+        method: "POST",
+        body: pass
+    })
+    .then(res => res.text())
+    .then(data => {
+        if (data.startsWith("OK|")) {
+            document.getElementById("passPopup").style.display = "none";
+
+            const url = data.split("|")[1];
+            newTab.location.href = url;
+        } else {
+            if (newTab) newTab.close();
+            alert("Wrong Password (Please Contact Nitin Verma)");
+        }
+    })
+    .catch(() => {
+        if (newTab) newTab.close();
+        alert("Server Error");
+    });
+}
+
+function resetToHomeContent() {
+    var mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+        mainContent.innerHTML = `
+            <div class="watermark"></div>
+            <h2>हमारा कार्य</h2>
+            <p><strong>📸 Nitin Photo Studio:</strong> नितिन फोटो स्टूडियो आपके जीवन के हर खास पल को संजोने के लिए समर्पित है। यहाँ शादी, बर्थडे, मैटरनिटी शूट, आउटडोर फोटोशूट और इवेंट फोटोग्राफी की बेहतरीन सेवाएँ उपलब्ध हैं। उन्नत कैमरा तकनीक एवं अनुभवी टीम के साथ, हम आपके यादगार लम्हों को खूबसूरत तस्वीरों में कैद करते हैं, ताकि आपकी खुशियों को बरसों तक संजोया जा सके।</p>
+            <p><strong>🛠 Jan Seva Kendra:</strong> जन सेवा केन्द्र पर आपको एक ही छत के नीचे अनेक प्रकार की सरकारी और डिजिटल सेवाएँ प्राप्त होती हैं। आधार कार्ड, पैन कार्ड, ऑनलाइन फ़ॉर्म, वोटर ID, ड्राइविंग लाइसेंस जैसी तमाम सरकारी सुविधाएं यहाँ आसान और सरल प्रक्रिया में उपलब्ध कराई जाती हैं। हमारा उद्देश्य है कि गाँव और शहर के सभी लोगों को तकनीकी और सरकारी सेवाएँ सुलभता से प्राप्त हो सकें।</p>
+            <p><strong>🗃️ स्पेशल = डिलीटेड डेटा रिकवरी:</strong> आज के डिजिटल युग में कई बार जरूरी फाइलें या फोटो गलती से डिलीट हो जाती हैं, जिससे परेशानी बढ़ जाती है। हमारी स्पेशल डाटा रिकवरी सेवा के माध्यम से, आप अपने डिलीट हुए फोटो, वीडियो, डॉक्युमेंट्स या अन्य महत्वपूर्ण डेटा को फिर से सुरक्षित प्राप्त कर सकते हैं। हमारे पास अपडेटेड सॉफ़्टवेयर और अनुभवी टेक्निकल टीम है, जो हार्ड डिस्क, पेन ड्राइव, मेमोरी कार्ड आदि से डाटा रिकवर करने में आपकी पूरी मदद करती है। आपकी जानकारी गोपनीय और सुरक्षित रखी जाती है, ताकि आपको अपनी खोई हुई फाइलें फिर से आसानी से मिल जाएं।</p>
+        `;
+    }
+}
+
+// ===== LIVE SEARCH =====
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const resultsBox = document.getElementById('searchResults');
+
+    // Collect all menu items and submenu links
+    function getAllItems() {
+        const items = [];
+        
+        // Main menu items
+        document.querySelectorAll('.menu-item').forEach(el => {
+            const text = el.textContent.trim();
+            const parent = el.closest('.menu-group');
+            const sub = parent ? parent.querySelector('.submenu') : null;
+            const subLinks = sub ? sub.querySelectorAll('a') : [];
+            const subTexts = [];
+            subLinks.forEach(a => { const t = a.textContent.trim(); if (t) subTexts.push(t); });
+            let icon = '📁';
+            const m = text.match(/^([\u{1F000}-\u{1FFFF}]|[\u2600-\u27BF]|[\u{2700}-\u{27BF}]|[^\w\s])/u);
+            if (m) icon = m[0];
+            items.push({ type: 'main', text: text, element: el, parent: parent, subTexts: subTexts, icon: icon });
+        });
+
+        // Submenu links
+        document.querySelectorAll('.submenu a, .submenu-csc a').forEach(link => {
+            const text = link.textContent.trim();
+            if (!text) return;
+            const already = items.some(i => i.type === 'sub' && i.text === text && i.element === link);
+            if (!already) {
+                let icon = '🔗';
+                const m = text.match(/^([\u{1F000}-\u{1FFFF}]|[\u2600-\u27BF]|[\u{2700}-\u{27BF}]|[^\w\s])/u);
+                if (m) icon = m[0];
+                const parent = link.closest('.menu-group');
+                items.push({ type: 'sub', text: text, element: link, parent: parent, icon: icon });
+            }
+        });
+
+        return items;
+    }
+
+    function doSearch(query) {
+        const q = query.toLowerCase().trim();
+        if (!q) { resultsBox.style.display = 'none'; return; }
+
+        const all = getAllItems();
+        const results = [];
+        all.forEach(item => {
+            let match = item.text.toLowerCase().includes(q);
+            if (!match && item.type === 'main' && item.subTexts) {
+                match = item.subTexts.some(s => s.toLowerCase().includes(q));
+            }
+            if (match) results.push(item);
+        });
+
+        if (results.length === 0) {
+            resultsBox.innerHTML = `<div class="search-empty"><span>😕</span>कोई परिणाम नहीं मिला</div>`;
+            resultsBox.style.display = 'block';
+            return;
+        }
+
+        let html = '';
+        results.forEach((item) => {
+            const badgeClass = item.type === 'main' ? 'menu' : 'link';
+            const badgeText = item.type === 'main' ? 'मेनू' : 'लिंक';
+            html += `<div class="search-result-item" data-type="${item.type}">
+                <span class="result-icon">${item.icon}</span>
+                <span class="result-title"><strong>${item.text}</strong></span>
+                <span class="result-badge ${badgeClass}">${badgeText}</span>
+            </div>`;
+        });
+
+        resultsBox.innerHTML = html;
+        resultsBox.style.display = 'block';
+
+        // Click handler for results
+        resultsBox.querySelectorAll('.search-result-item').forEach(el => {
+            el.addEventListener('click', function() {
+                const idx = Array.from(this.parentElement.children).indexOf(this);
+                const item = results[idx];
+                if (!item) return;
+
+                if (item.type === 'main' && item.parent) {
+                    const sub = item.parent.querySelector('.submenu');
+                    if (sub) {
+                        document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                        sub.style.display = 'flex';
+                        if (item.element) {
+                            item.element.classList.remove('clicked');
+                            void item.element.offsetWidth;
+                            item.element.classList.add('clicked');
+                        }
+                    }
+                } else if (item.type === 'sub' && item.element) {
+                    if (item.parent) {
+                        const sub = item.parent.querySelector('.submenu');
+                        if (sub) {
+                            document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                            sub.style.display = 'flex';
+                        }
+                    }
+                    if (item.element.href && !item.element.href.startsWith('#')) {
+                        window.open(item.element.href, '_blank');
+                    } else if (item.element.href && item.element.href.startsWith('#')) {
+                        item.element.click();
+                    } else {
+                        item.element.click();
+                    }
+                }
+
+                searchInput.value = '';
+                resultsBox.style.display = 'none';
+            });
+        });
+    }
+
+    searchInput.addEventListener('input', function() { doSearch(this.value); });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-wrapper')) {
+            resultsBox.style.display = 'none';
+        }
+    });
+
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            this.value = '';
+            resultsBox.style.display = 'none';
+            this.blur();
+        }
+    });
+});
+</script>
 </body>
 </html>
