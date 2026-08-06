@@ -194,6 +194,204 @@
     border-radius: 10px;
   }
 
+  /* ===== SEARCH BOX - Bottom Right Corner ===== */
+  .search-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99998;
+    width: 50px;
+    transition: 0.4s ease;
+  }
+
+  .search-wrapper:hover,
+  .search-wrapper:focus-within {
+    width: 320px;
+  }
+
+  .search-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .search-icon-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+
+  .search-icon-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.4);
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 13px 20px 13px 55px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    outline: none;
+    background: rgba(10, 10, 30, 0.92);
+    backdrop-filter: blur(20px);
+    color: #fff;
+    transition: 0.4s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    opacity: 0;
+    width: 50px;
+    pointer-events: none;
+  }
+
+  .search-wrapper:hover #searchInput,
+  .search-wrapper:focus-within #searchInput {
+    opacity: 1;
+    width: 100%;
+    pointer-events: auto;
+    border-color: rgba(255,107,107,0.3);
+  }
+
+  #searchInput::placeholder {
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+  }
+
+  #searchInput:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 30px rgba(255,107,107,0.1);
+  }
+
+  #searchResults {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 100%;
+    min-width: 280px;
+    background: rgba(10, 10, 30, 0.96);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    max-height: 350px;
+    overflow-y: auto;
+    display: none;
+    box-shadow: 0 12px 50px rgba(0,0,0,0.5);
+    padding: 6px;
+  }
+
+  #searchResults::-webkit-scrollbar {
+    width: 4px;
+  }
+  #searchResults::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff6b6b, #ffa502);
+    border-radius: 10px;
+  }
+
+  .search-result-item {
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: #ddd;
+    font-size: 13px;
+  }
+
+  .search-result-item:hover {
+    background: rgba(255,107,107,0.08);
+  }
+
+  .search-result-item .result-icon {
+    font-size: 16px;
+  }
+
+  .search-result-item .result-title {
+    flex: 1;
+  }
+
+  .search-result-item .result-title strong {
+    color: #ffd93d;
+  }
+
+  .search-result-item .result-badge {
+    font-size: 9px;
+    padding: 1px 8px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.4);
+  }
+
+  .search-result-item .result-badge.menu {
+    color: #ffa502;
+    background: rgba(255,165,0,0.1);
+  }
+
+  .search-result-item .result-badge.link {
+    color: #00d2ff;
+    background: rgba(0,210,255,0.08);
+  }
+
+  .search-empty {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+  }
+
+  .search-empty span {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .search-wrapper {
+        bottom: 12px;
+        right: 12px;
+        width: 45px;
+    }
+    .search-wrapper:hover,
+    .search-wrapper:focus-within {
+        width: 280px;
+    }
+    .search-icon-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    #searchInput {
+        padding: 11px 16px 11px 50px;
+        font-size: 13px;
+        width: 45px;
+    }
+    .search-wrapper:hover #searchInput,
+    .search-wrapper:focus-within #searchInput {
+        width: 100%;
+    }
+    #searchResults {
+        min-width: 240px;
+        right: 0;
+        bottom: 55px;
+        max-height: 280px;
+    }
+  }
+
   /* Responsive */
   @media (max-width:768px){
     .top-title {
@@ -801,6 +999,16 @@
         </div>
     </div>
 </div>
+
+<!-- ===== SEARCH BOX - BOTTOM RIGHT CORNER ===== -->
+<div class="search-wrapper">
+    <div class="search-container">
+        <div class="search-icon-btn">🔍</div>
+        <input type="text" id="searchInput" placeholder="🔎 यहाँ सर्च करें... (जन सेवा, फोटो, CSC, पैन, आधार...)" autocomplete="off" />
+        <div id="searchResults"></div>
+    </div>
+</div>
+
 <!-- PAGE CONTENT -->
 <div class="page-wrapper">
     <div class="main-content">
@@ -2125,6 +2333,138 @@ function resetToHomeContent() {
         `;
     }
 }
+
+// ===== LIVE SEARCH =====
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const resultsBox = document.getElementById('searchResults');
+
+    // Collect all menu items and submenu links
+    function getAllItems() {
+        const items = [];
+        
+        // Main menu items
+        document.querySelectorAll('.menu-item').forEach(el => {
+            const text = el.textContent.trim();
+            const parent = el.closest('.menu-group');
+            const sub = parent ? parent.querySelector('.submenu') : null;
+            const subLinks = sub ? sub.querySelectorAll('a') : [];
+            const subTexts = [];
+            subLinks.forEach(a => { const t = a.textContent.trim(); if (t) subTexts.push(t); });
+            let icon = '📁';
+            const m = text.match(/^([\u{1F000}-\u{1FFFF}]|[\u2600-\u27BF]|[\u{2700}-\u{27BF}]|[^\w\s])/u);
+            if (m) icon = m[0];
+            items.push({ type: 'main', text: text, element: el, parent: parent, subTexts: subTexts, icon: icon });
+        });
+
+        // Submenu links
+        document.querySelectorAll('.submenu a, .submenu-csc a').forEach(link => {
+            const text = link.textContent.trim();
+            if (!text) return;
+            const already = items.some(i => i.type === 'sub' && i.text === text && i.element === link);
+            if (!already) {
+                let icon = '🔗';
+                const m = text.match(/^([\u{1F000}-\u{1FFFF}]|[\u2600-\u27BF]|[\u{2700}-\u{27BF}]|[^\w\s])/u);
+                if (m) icon = m[0];
+                const parent = link.closest('.menu-group');
+                items.push({ type: 'sub', text: text, element: link, parent: parent, icon: icon });
+            }
+        });
+
+        return items;
+    }
+
+    function doSearch(query) {
+        const q = query.toLowerCase().trim();
+        if (!q) { resultsBox.style.display = 'none'; return; }
+
+        const all = getAllItems();
+        const results = [];
+        all.forEach(item => {
+            let match = item.text.toLowerCase().includes(q);
+            if (!match && item.type === 'main' && item.subTexts) {
+                match = item.subTexts.some(s => s.toLowerCase().includes(q));
+            }
+            if (match) results.push(item);
+        });
+
+        if (results.length === 0) {
+            resultsBox.innerHTML = `<div class="search-empty"><span>😕</span>कोई परिणाम नहीं मिला</div>`;
+            resultsBox.style.display = 'block';
+            return;
+        }
+
+        let html = '';
+        results.forEach((item) => {
+            const badgeClass = item.type === 'main' ? 'menu' : 'link';
+            const badgeText = item.type === 'main' ? 'मेनू' : 'लिंक';
+            html += `<div class="search-result-item" data-type="${item.type}">
+                <span class="result-icon">${item.icon}</span>
+                <span class="result-title"><strong>${item.text}</strong></span>
+                <span class="result-badge ${badgeClass}">${badgeText}</span>
+            </div>`;
+        });
+
+        resultsBox.innerHTML = html;
+        resultsBox.style.display = 'block';
+
+        // Click handler for results
+        resultsBox.querySelectorAll('.search-result-item').forEach(el => {
+            el.addEventListener('click', function() {
+                const idx = Array.from(this.parentElement.children).indexOf(this);
+                const item = results[idx];
+                if (!item) return;
+
+                if (item.type === 'main' && item.parent) {
+                    const sub = item.parent.querySelector('.submenu');
+                    if (sub) {
+                        document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                        sub.style.display = 'flex';
+                        if (item.element) {
+                            item.element.classList.remove('clicked');
+                            void item.element.offsetWidth;
+                            item.element.classList.add('clicked');
+                        }
+                    }
+                } else if (item.type === 'sub' && item.element) {
+                    if (item.parent) {
+                        const sub = item.parent.querySelector('.submenu');
+                        if (sub) {
+                            document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                            sub.style.display = 'flex';
+                        }
+                    }
+                    if (item.element.href && !item.element.href.startsWith('#')) {
+                        window.open(item.element.href, '_blank');
+                    } else if (item.element.href && item.element.href.startsWith('#')) {
+                        item.element.click();
+                    } else {
+                        item.element.click();
+                    }
+                }
+
+                searchInput.value = '';
+                resultsBox.style.display = 'none';
+            });
+        });
+    }
+
+    searchInput.addEventListener('input', function() { doSearch(this.value); });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-wrapper')) {
+            resultsBox.style.display = 'none';
+        }
+    });
+
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            this.value = '';
+            resultsBox.style.display = 'none';
+            this.blur();
+        }
+    });
+});
 </script>
 </body>
 </html>
