@@ -1698,17 +1698,126 @@ input.addEventListener('keyup', (event) => {
     goBtn.click();
   }
 });
-// --- Visitor Counter  ---
-fetch("https://script.google.com/macros/s/AKfycbzqLmFrXdtkbmKURczQDi2rqUuFwyXZPXyyseXE50DBF8-RaOb2fn5K0duAeWN6FDhh/exec")
-  .then(response => response.json())
+
+// --- Visitor Counter + Dynamic Image (अब page-wrapper के top पर) ---
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbzqLmFrXdtkbmKURczQDi2rqUuFwyXZPXyyseXE50DBF8-RaOb2fn5K0duAeWN6FDhh/exec";
+
+fetch(API_URL)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response failed");
+    }
+    return response.json();
+  })
   .then(data => {
 
-    document.getElementById("visitorCount")
-      .innerHTML =
-      "👥 Total Visitors : " +
-      data.visitors;
+    // Visitor counter
+    const visitorElement = document.getElementById("visitorCount");
+    if (visitorElement) {
+      visitorElement.textContent = "👥 Total Visitors : " + (data.visitors || 0);
+    }
 
+    // Dynamic Image - अब page-wrapper के top पर
+    const imageUrl = data.imageUrl;
+    if (imageUrl) {
+      const existingImage = document.getElementById("sheetDynamicImage");
+
+      if (existingImage) {
+        existingImage.src = imageUrl;
+      } else {
+        // नया image container बनाएँ
+        const imageBox = document.createElement("div");
+        imageBox.id = "sheetImageBox";
+        imageBox.style.textAlign = "center";
+        imageBox.style.marginBottom = "15px"; // main-content से थोड़ा gap
+        imageBox.style.background = "linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #8a2be2)";
+        imageBox.style.backgroundSize = "400% 400%";
+        imageBox.style.animation = "sparkleBackground 6s ease infinite";
+        imageBox.style.borderRadius = "16px";
+        imageBox.style.padding = "15px";
+        imageBox.style.boxShadow = "0 0 30px rgba(255, 215, 0, 0.5)";
+
+        // Sparkle effect ke liye style tag add karo agar nahi hai toh
+        if (!document.getElementById('sparkleStyle')) {
+            const style = document.createElement('style');
+            style.id = 'sparkleStyle';
+            style.textContent = `
+                @keyframes sparkleBackground {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .sparkle-particle {
+                    position: absolute;
+                    width: 6px;
+                    height: 6px;
+                    background: white;
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px gold;
+                    animation: sparkleAnim 1.5s ease-in-out infinite alternate;
+                    pointer-events: none;
+                }
+                @keyframes sparkleAnim {
+                    0% { opacity: 0.2; transform: scale(0.5); }
+                    100% { opacity: 1; transform: scale(1.2); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Sparkle particles add karo
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'sparkle-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.width = (Math.random() * 8 + 2) + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            particle.style.animationDuration = (Math.random() * 1.5 + 0.5) + 's';
+            particle.style.background = `radial-gradient(circle, #fff, ${['#ff0', '#f0f', '#0ff', '#0f0', '#ff8c00'][Math.floor(Math.random() * 5)]})`;
+            imageBox.style.position = 'relative';
+            imageBox.style.overflow = 'hidden';
+            imageBox.appendChild(particle);
+        }
+
+        imageBox.innerHTML += `
+          <img
+            id="sheetDynamicImage"
+            src="${imageUrl}"
+            alt="Dynamic Image"
+            style="
+              max-width: 100%;
+              width: auto;
+              height: auto;
+              max-height: 400px;
+              border-radius: 12px;
+              box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+              position: relative;
+              z-index: 2;
+            "
+          >
+        `;
+
+        // page-wrapper के अंदर सबसे ऊपर insert करें
+        const pageWrapper = document.querySelector(".page-wrapper");
+        if (pageWrapper) {
+          const existingBox = document.getElementById("sheetImageBox");
+          if (existingBox) existingBox.remove();
+          pageWrapper.insertBefore(imageBox, pageWrapper.firstChild);
+        }
+      }
+    }
+  })
+  .catch(error => {
+    console.error("Visitor/Image API Error:", error);
+    const visitorElement = document.getElementById("visitorCount");
+    if (visitorElement) {
+      visitorElement.textContent = "Visitor count load नहीं हुआ";
+    }
   });
+
 // --- HECTARE TO BIGHA CALCULATOR LOADER ---
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -1727,6 +1836,10 @@ document.addEventListener('DOMContentLoaded', function(){
             // सभी submenu hide
             document.querySelectorAll('.submenu')
             .forEach(s => s.style.display = 'none');
+            
+            // Image box hide karein
+            const imageBox = document.getElementById('sheetImageBox');
+            if (imageBox) imageBox.style.display = 'none';
 
             var mainContent =
                 document.querySelector('.main-content');
@@ -2116,6 +2229,9 @@ document.addEventListener('DOMContentLoaded', function(){
             e.preventDefault();
             e.stopPropagation();
             document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+            // Image box hide karein
+            const imageBox = document.getElementById('sheetImageBox');
+            if (imageBox) imageBox.style.display = 'none';
             var mainContent = document.querySelector('.main-content');
             if(mainContent){
                 mainContent.innerHTML = `
@@ -2331,6 +2447,9 @@ function resetToHomeContent() {
             <p><strong>🛠 Jan Seva Kendra:</strong> जन सेवा केन्द्र पर आपको एक ही छत के नीचे अनेक प्रकार की सरकारी और डिजिटल सेवाएँ प्राप्त होती हैं। आधार कार्ड, पैन कार्ड, ऑनलाइन फ़ॉर्म, वोटर ID, ड्राइविंग लाइसेंस जैसी तमाम सरकारी सुविधाएं यहाँ आसान और सरल प्रक्रिया में उपलब्ध कराई जाती हैं। हमारा उद्देश्य है कि गाँव और शहर के सभी लोगों को तकनीकी और सरकारी सेवाएँ सुलभता से प्राप्त हो सकें।</p>
             <p><strong>🗃️ स्पेशल = डिलीटेड डेटा रिकवरी:</strong> आज के डिजिटल युग में कई बार जरूरी फाइलें या फोटो गलती से डिलीट हो जाती हैं, जिससे परेशानी बढ़ जाती है। हमारी स्पेशल डाटा रिकवरी सेवा के माध्यम से, आप अपने डिलीट हुए फोटो, वीडियो, डॉक्युमेंट्स या अन्य महत्वपूर्ण डेटा को फिर से सुरक्षित प्राप्त कर सकते हैं। हमारे पास अपडेटेड सॉफ़्टवेयर और अनुभवी टेक्निकल टीम है, जो हार्ड डिस्क, पेन ड्राइव, मेमोरी कार्ड आदि से डाटा रिकवर करने में आपकी पूरी मदद करती है। आपकी जानकारी गोपनीय और सुरक्षित रखी जाती है, ताकि आपको अपनी खोई हुई फाइलें फिर से आसानी से मिल जाएं।</p>
         `;
+        // Image box wapas show karein
+        const imageBox = document.getElementById('sheetImageBox');
+        if (imageBox) imageBox.style.display = 'block';
     }
 }
 
